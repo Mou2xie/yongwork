@@ -1,0 +1,34 @@
+<nav class="w-full h-18 flex justify-between items-center px-5 lg:px-30 relative">
+    <div class="flex items-center gap-5">
+        <img src="/images/logo.png" alt="logo" class=" hidden lg:block w-10 h-10">
+        <span class=" text-highlight-text text-xl lg:text-2xl font-anton">YONGWORK.COM</span>
+    </div>
+    <!-- desktop menu -->
+    <div class="hidden lg:block space-x-8">
+        @for(route of routes; track route.label) {
+        <a class=" text-highlight-text hover:text-accent transition-colors duration-300 " routerLink="{{ route.path }}"
+            routerLinkActive="text-accent!" [routerLinkActiveOptions]="{ exact: route.path === '/' }">
+            {{route.label }}
+        </a>
+        }
+    </div>
+    <!-- mobile menu button-->
+    <button class=" lg:hidden" (click)="toggleMenu()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-8 h-8 text-highlight-text fill-current">
+            <path d="M3 4H21V6H3V4ZM3 11H21V13H3V11ZM3 18H21V20H3V18Z"></path>
+        </svg>
+    </button>
+
+    <!-- mobile menu -->
+    @if(menuFlag()){
+    <div class="absolute top-18 left-0 right-0 border-y border-normal-text bg-bg">
+        @for(route of routes; track route.label) {
+        <a class=" block text-highlight-text text-lg py-4 text-center " routerLink="{{ route.path }}"
+            routerLinkActive="text-accent!" [routerLinkActiveOptions]="{ exact: route.path === '/' }"
+            (click)="toggleMenu()">
+            {{route.label }}
+        </a>
+        }
+    </div>
+    }
+</nav>

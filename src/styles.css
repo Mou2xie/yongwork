@@ -1,3 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Roboto+Flex:opsz,wght,XOPQ,XTRA,YOPQ,YTDE,YTFI,YTLC,YTUC@8..144,100..1000,96,468,79,-203,738,514,712&display=swap');
 
 @import "tailwindcss";
+
+
+@theme {
+    /* Colors */
+    --color-bg: #212121;
+    --color-accent: #3EF050;
+    --color-highlight-text: #DEDEDE;
+    --color-normal-text: #B6B6B6;
+
+    /* Fonts */
+    --font-anton: "Anton", sans-serif;
+    --font-roboto-flex: "Roboto Flex", sans-serif;
+}
+
+body {
+    @apply bg-bg text-normal-text font-roboto-flex
+}
