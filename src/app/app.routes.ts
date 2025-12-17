@@ -3,6 +3,7 @@ import { MainLayout } from './layouts/main-layout/main-layout.layout';
 import { Index } from './features/index/index.route';
 import { Portfolio } from './features/portfolio/portfolio.route';
 import { AboutMe } from './features/about-me/about-me.route';
+import { Contact } from './features/contact/contact.route';
 
 export const routes: Routes = [
     {
@@ -21,6 +22,10 @@ export const routes: Routes = [
                 path: 'about-me',
                 component: AboutMe,
             },
+            {
+                path: 'contact',
+                component: Contact,
+            }
         ],
     },
 ];

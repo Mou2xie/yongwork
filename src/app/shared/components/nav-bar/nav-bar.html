@@ -21,7 +21,7 @@
 
     <!-- mobile menu -->
     @if(menuFlag()){
-    <div class="absolute top-18 left-0 right-0 border-y border-normal-text bg-bg">
+    <div class="absolute top-18 left-0 right-0 border-b border-normal-text bg-bg">
         @for(route of routes; track route.label) {
         <a class=" block text-highlight-text text-lg py-4 text-center " routerLink="{{ route.path }}"
             routerLinkActive="text-accent!" [routerLinkActiveOptions]="{ exact: route.path === '/' }"
