@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { Title } from "../../shared/components/title/title.component";
+import { ProductListItem } from "../../shared/components/product-list-item/product-list-item.component";
 
 interface Stack {
     iconUrl: string;
@@ -9,7 +10,7 @@ interface Stack {
 @Component({
     selector: 'app-index',
     templateUrl: './index.html',
-    imports: [Title],
+    imports: [Title, ProductListItem],
 })
 export class Index {
     protected frontendStack: Stack[] = [
