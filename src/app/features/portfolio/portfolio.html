@@ -1,39 +1,33 @@
-<div class=" mt-18">
-    <section class=" mt-30 lg:mt-40">
-        <div class=" space-y-3">
-            <h1 class=" text-3xl lg:text-5xl font-bold font-anton text-highlight-text">
-                Engineering <span class=" text-accent">Solutions</span>, Not Just Software
-            </h1>
-            <p class="lg:text-lg">
-                I look beyond syntax and frameworks. Every project below is a holistic answer to a specific
-                problem—combining product strategy, user-centric design, and robust engineering to deliver complete,
-                shipping solutions.
-            </p>
-        </div>
-    </section>
+<app-content-section class=" mt-30 lg:mt-40">
+    <div class=" space-y-3">
+        <h1 class=" text-3xl lg:text-5xl font-bold font-anton text-highlight-text">
+            Engineering <span class=" text-accent">Solutions</span>, Not Just Software
+        </h1>
+        <p class="lg:text-lg">
+            I look beyond syntax and frameworks. Every project below is a holistic answer to a specific
+            problem—combining product strategy, user-centric design, and robust engineering to deliver complete,
+            shipping solutions.
+        </p>
+    </div>
+</app-content-section>
 
-    <section class=" my-10 lg:my-20 grid grid-cols-1 lg:grid-cols-5 gap-5">
-        <aside class=" lg:col-span-1 sticky top-18 self-start">
-            <div class=" space-y-5 font-anton text-xl text-highlight-text">
-                <div class=" ">Web APP</div>
-                <div class=" opacity-50 hover:opacity-100 transition-opacity duration-200 cursor-pointer">Mobile APP
-                </div>
-                <div class=" opacity-50 hover:opacity-100 transition-opacity duration-200 cursor-pointer">AI Workflow
-                </div>
-                <div class=" opacity-50 hover:opacity-100 transition-opacity duration-200 cursor-pointer">Design Work
-                </div>
-                <div class=" opacity-50 hover:opacity-100 transition-opacity duration-200 cursor-pointer">PRD</div>
-            </div>
-        </aside>
-        <div class=" lg:col-span-4">
-            <div class=" grid grid-cols-1 lg:grid-cols-2 gap-10">
-                <app-product-list-item></app-product-list-item>
-                <app-product-list-item></app-product-list-item>
-                <app-product-list-item></app-product-list-item>
-                <app-product-list-item></app-product-list-item>
-                <app-product-list-item></app-product-list-item>
-                <app-product-list-item></app-product-list-item>
-            </div>
+<app-content-section class=" grid grid-cols-1 lg:grid-cols-5 gap-5">
+
+    <aside class=" lg:col-span-1 static lg:sticky top-18 self-start select-none">
+        <div class=" space-y-5 font-anton text-xl">
+            @for(category of categories; track category){
+            <div class=" cursor-pointer hover:text-highlight-text transition-colors duration-200"
+                [class.text-white]=" category === selectedCategory()" (click)="setSelectedCategory(category)">
+                {{category}}</div>
+            }
         </div>
-    </section>
-</div>
+    </aside>
+
+    <div class=" lg:col-span-4">
+        <div class=" grid grid-cols-1 lg:grid-cols-2 gap-8">
+            @for(item of projectsList(); track item.name){
+            <app-product-list-item [projectInfo]="item"></app-product-list-item>
+            }
+        </div>
+    </div>
+</app-content-section>

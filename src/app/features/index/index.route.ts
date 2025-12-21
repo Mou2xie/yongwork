@@ -1,6 +1,8 @@
-import { Component } from "@angular/core";
+import { Component, inject } from "@angular/core";
 import { Title } from "../../shared/components/title/title.component";
 import { ProductListItem } from "../../shared/components/product-list-item/product-list-item.component";
+import { ContentSection } from "../../shared/components/content-section/content-section.component";
+import { PortfolioService } from "../../core/services/portfolioService.service";
 
 interface Stack {
     iconUrl: string;
@@ -10,9 +12,14 @@ interface Stack {
 @Component({
     selector: 'app-index',
     templateUrl: './index.html',
-    imports: [Title, ProductListItem],
+    imports: [Title, ProductListItem, ContentSection],
 })
 export class Index {
+
+    protected readonly portfolioService = inject(PortfolioService);
+
+    protected readonly featuredProjects = this.portfolioService.getFeaturedProjects();
+
     protected frontendStack: Stack[] = [
         {
             iconUrl: '/icons/javascript.svg',

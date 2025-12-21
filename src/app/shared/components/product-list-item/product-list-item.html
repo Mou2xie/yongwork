@@ -1,17 +1,32 @@
 <div>
-    <div class=" h-56 bg-gray-300"></div>
-    <div class=" mt-3 space-y-1">
-        <p class=" text-2xl font-anton text-highlight-text">Project Name</p>
-        <p> A description about the project</p>
-        <div class=" flex items-center gap-5">
-            <div class=" flex items-center gap-2">
+    <img [src]="projectInfo().cover" class=" h-56 object-cover" />
+    <div class=" mt-3">
+        <p class=" text-2xl font-anton text-highlight-text">{{projectInfo().name}}</p>
+        <p class=" line-clamp-1">{{projectInfo().description}}</p>
+        <div class=" flex items-center gap-3">
+            @for(item of projectInfo().platform; track item){
+            <div class=" flex items-center gap-1">
+                @switch(item){
+                @case('Web'){
                 <img src="/images/chrome.svg" alt="chrome-icon" class=" w-5">
-                <div>website</div>
-            </div>
-            <div class=" flex items-center gap-2">
+                <div>Website</div>
+                }
+                @case('Extension'){
                 <img src="/images/plugin.svg" alt="plugin-icon" class=" w-5">
-                <div>browser extension</div>
+                <div>Extension</div>
+                }
+                @case('Mobile'){
+                <img src="/images/mobile-icon.svg" alt="mobile-icon" class=" w-5">
+                <div>Mobile</div>
+                }
+                @case('Desktop'){
+                <img src="/images/desktop.svg" alt="desktop-icon" class=" w-5">
+                <div>Desktop</div>
+                }
+                @default{}
+                }
             </div>
+            }
         </div>
     </div>
 </div>
