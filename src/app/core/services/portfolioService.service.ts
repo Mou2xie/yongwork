@@ -1,15 +1,15 @@
 import { Injectable } from "@angular/core";
 
-export type Category = 'Web APP' | 'Mobile APP' | 'AI Workflow' | 'Design Work' | 'PRD';
+export type Category = 'Web APP' | 'Mobile APP' | 'AI Workflow' | 'Design' | 'PRD';
 
 export type Platform = 'Web' | 'Mobile' | 'Desktop' | 'Extension' | undefined;
 
 export interface Project {
-    name: string;
+    id: number;
+    projectName: string;
     category: Category;
     description: string;
     cover: string;
-    url: string;
     platform: Platform[];
     featured: boolean;
 }
@@ -19,36 +19,63 @@ export interface Project {
 })
 export class PortfolioService {
 
-    private readonly _portfolioCategories: Category[] = ['Web APP', 'Mobile APP', 'AI Workflow', 'Design Work', 'PRD'];
+    private readonly _portfolioCategories: Category[] = ['Web APP', 'AI Workflow', 'Design', 'PRD'];
 
     private readonly _portfolioProjects: Project[] = [
         {
-            name: 'LingoPick',
+            id: 1,
+            projectName: 'LingoPick',
             category: 'Web APP',
             description: 'AI-powered Word Translator & Vocabulary Builder',
             cover: '/projects/lingopick/cover.png',
-            url: '/',
             platform: ['Web', 'Extension'],
             featured: true,
         },
         {
-            name: 'SpeakingPass',
+            id: 2,
+            projectName: 'SpeakingPass',
             category: 'Web APP',
-            description: 'Improve speaking skills for IELTS exam',
+            description: 'Improve your IELTS speaking band',
             cover: '/projects/speakingpass/cover.png',
-            url: '/',
             platform: ['Web'],
             featured: true,
         },
         {
-            name: 'Transider',
+            id: 3,
+            projectName: 'Transider',
             category: 'Web APP',
             description: 'En-Ch in-page Translator',
             cover: '/projects/transider/cover.png',
-            url: '/',
             platform: ['Extension'],
             featured: true,
-        }
+        },
+        {
+            id: 4,
+            projectName: 'horoscopechinois.today (fr)',
+            category: 'Web APP',
+            description: 'Chinese traditional astrology online',
+            cover: '/projects/horoscopechinois/cover.png',
+            platform: ['Web'],
+            featured: false,
+        },
+        {
+            id: 5,
+            projectName: 'grokani.love',
+            category: 'Web APP',
+            description: 'Boost the affection level with Ani',
+            cover: '/projects/grokani/cover.png',
+            platform: ['Web'],
+            featured: false,
+        },
+        {
+            id: 6,
+            projectName: 'YongWork',
+            category: 'Web APP',
+            description: 'Personal website',
+            cover: '/projects/yongwork/cover.png',
+            platform: ['Web'],
+            featured: false,
+        },
     ];
 
     public get portfolioCategories() {

@@ -1,0 +1,38 @@
+@if(pageContent()){
+<app-content-section>
+    <div class=" flex items-center gap-8">
+        <h1 class=" text-[2.6rem] font-anton text-highlight-text">{{pageContent()?.projectName}}</h1>
+        <div class=" flex items-center gap-3">
+            @for( item of pageContent()?.links; track item.channel){
+            @switch(item.channel){
+            @case('figma'){
+            <a href="{{item.url}}" target="_blank" class=" hover:scale-110 transition-all duration-200"><img
+                    src="/images/figma.svg" alt="figma" class=" w-9"></a>
+            }
+            @case('github'){
+            <a href="{{item.url}}" target="_blank" class=" hover:scale-110 transition-all duration-200"><img
+                    src="/images/git.svg" alt="github" class=" w-9"></a>
+            }
+            @case('website'){
+            <a href="{{item.url}}" target="_blank" class=" hover:scale-110 transition-all duration-200"><img
+                    src="/images/jump.svg" alt="website" class=" w-9"></a>
+            }
+            }
+            }
+        </div>
+    </div>
+    <p class=" text-lg">{{pageContent()?.description}}</p>
+</app-content-section>
+
+<app-content-section>
+
+</app-content-section>
+
+<app-content-section>
+    <div [innerHTML]="pageContent()?.content"></div>
+</app-content-section>
+
+}
+@else{
+<p class=" h-52 flex justify-center items-center">Project Not Found</p>
+}
