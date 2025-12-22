@@ -25,7 +25,7 @@
 
     <div class=" lg:col-span-4">
         <div class=" grid grid-cols-1 lg:grid-cols-2 gap-8">
-            @for(item of projectsList(); track item.name){
+            @for(item of projectsList(); track item.projectName){
             <app-product-list-item [projectInfo]="item"></app-product-list-item>
             }
         </div>
