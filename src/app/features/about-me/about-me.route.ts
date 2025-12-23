@@ -14,7 +14,7 @@ export class AboutMe {
             title: 'Student',
             company: 'Conestoga College',
             date: '2024 - Present',
-            description: 'Pursuing a Diploma in Web and Mobile Application Development[cite: 50, 51]. Deepening expertise in modern full-stack ecosystem while actively mastering AI agent development and automation workflows using n8n and LangChain.'
+            description: 'Studying Web and Mobile Application Development. Deepening expertise in modern full-stack ecosystem while actively mastering AI agent development and automation workflows using n8n and LangChain.'
         },
         {
             title: 'Product Owner',
