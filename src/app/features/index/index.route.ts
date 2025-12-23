@@ -101,6 +101,10 @@ export class Index {
 
     protected toolsStack: Stack[] = [
         {
+            iconUrl: '/icons/langchain.png',
+            label: 'LangChain'
+        },
+        {
             iconUrl: '/icons/n8n.svg',
             label: 'n8n'
         },

@@ -1,7 +1,7 @@
 @if(pageContent()){
 <app-content-section>
-    <div class=" flex items-center gap-10">
-        <h1 class=" text-[2.6rem] font-anton text-highlight-text">{{pageContent()?.projectName}}</h1>
+    <div class=" flex flex-col lg:flex-row lg:items-center gap-2 lg:gap-10">
+        <h1 class=" text-[2.6rem] font-anton text-highlight-text line-clamp-1">{{pageContent()?.projectName}}</h1>
         <div class=" flex items-center gap-4">
             @for( item of pageContent()?.links; track item.channel){
             @switch(item.channel){
@@ -21,7 +21,7 @@
             }
         </div>
     </div>
-    <p class=" text-lg">{{pageContent()?.description}}</p>
+    <p class=" text-lg mt-2 lg:mt-0">{{pageContent()?.description}}</p>
 </app-content-section>
 
 <app-content-section>
