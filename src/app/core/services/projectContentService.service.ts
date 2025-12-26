@@ -8,6 +8,9 @@ import { grokani } from "../../assets/projectContent/grokani.data";
 import { HuLandscaping } from "../../assets/projectContent/HuLandscaping.data";
 import { molibb } from "../../assets/projectContent/molibb.data";
 import { yongwork } from "../../assets/projectContent/yongwork.data";
+import { fortunegenerator } from "../../assets/projectContent/fortunegenerator.data";
+import { keywordsExplainer } from "../../assets/projectContent/keywordsexplainer.data";
+import { tendermaker } from "../../assets/projectContent/tendermaker.data";
 
 @Injectable({
     providedIn: 'root'
@@ -15,6 +18,7 @@ import { yongwork } from "../../assets/projectContent/yongwork.data";
 export class ProjectContentService {
 
     private readonly _projectContent: IProjectContent[] = [
+        // Web
         lingoPick,
         speakingPass,
         transider,
@@ -23,6 +27,10 @@ export class ProjectContentService {
         HuLandscaping,
         molibb,
         yongwork,
+        // AI Workflow
+        tendermaker,
+        fortunegenerator,
+        keywordsExplainer,
     ];
 
     public getProjectContent(id: number): IProjectContent | undefined {

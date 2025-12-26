@@ -20,9 +20,11 @@ export interface Project {
 })
 export class PortfolioService {
 
-    private readonly _portfolioCategories: Category[] = ['Web APP', 'AI Workflow', 'Design', 'PRD'];
+    private readonly _portfolioCategories: Category[] = ['Web APP', 'AI Workflow', 'Design'];
 
     private readonly _portfolioProjects: Project[] = [
+
+        // Web APP start from 1
         {
             id: 1,
             projectName: 'LingoPick',
@@ -95,8 +97,40 @@ export class PortfolioService {
             platform: ['Web'],
             featured: false,
         },
+
+        // AI Workflow start from 300
         {
-            id: 9,
+            id: 300,
+            projectName: 'n8n Tender Document Generator',
+            category: 'AI Workflow',
+            description: 'AI workflow to generate tender document',
+            cover: '/projects/tendermaker/cover.png',
+            platform: [],
+            featured: false,
+        },
+        {
+            id: 301,
+            projectName: 'n8n Fortune Generator',
+            category: 'AI Workflow',
+            description: 'Generate poetry fortunes for horoscopechinois.today',
+            cover: '/projects/fortunegenerator/cover.png',
+            platform: [],
+            featured: false,
+        },
+        {
+            id: 302,
+            projectName: 'n8n Google Trends Keywords Tool',
+            category: 'AI Workflow',
+            description: 'Find product idea from Google Trends keywords',
+            cover: '/projects/keywordexplainer/cover.png',
+            platform: [],
+            featured: false,
+        },
+
+
+        // Design works start from 500
+        {
+            id: 500,
             projectName: 'Top Hunter',
             category: 'Design',
             description: 'Monster Hunter game recorder APP',
@@ -105,9 +139,8 @@ export class PortfolioService {
             featured: false,
             url: 'https://www.figma.com/design/ysrhPHImoduDziVILfeVap/MonsterHunterRecorder?t=tnWxb1oP8CesnEiL-1',
         },
-        // Design works
         {
-            id: 10,
+            id: 501,
             projectName: 'SMS Forwarder',
             category: 'Design',
             description: 'An Android APP for forwarding messages',
@@ -117,7 +150,7 @@ export class PortfolioService {
             url: 'https://www.figma.com/design/5Uo3kVScGig5Ry8m13hPud/sms-forwarder?t=tnWxb1oP8CesnEiL-1',
         },
         {
-            id: 11,
+            id: 502,
             projectName: 'LingoPick',
             category: 'Design',
             description: 'All platforms design for vocabulary builder',
@@ -127,7 +160,7 @@ export class PortfolioService {
             url: 'https://www.figma.com/design/MVUYNNXyCxGtkKeYwp8iD9/LingoPick?t=tnWxb1oP8CesnEiL-1',
         },
         {
-            id: 12,
+            id: 503,
             projectName: 'Personal Website',
             category: 'Design',
             description: 'Personal website design',
@@ -137,7 +170,7 @@ export class PortfolioService {
             url: 'https://www.figma.com/design/HKqAEOWLkDBUUjbmydAaoP/personal-website?t=tnWxb1oP8CesnEiL-1',
         },
         {
-            id: 13,
+            id: 504,
             projectName: 'Transider',
             category: 'Design',
             description: 'Chrome extension design',
@@ -147,7 +180,7 @@ export class PortfolioService {
             url: 'https://www.figma.com/design/L22X0kY1g8xSfvKqbnzjdF/Transider?t=tnWxb1oP8CesnEiL-1',
         },
         {
-            id: 14,
+            id: 505,
             projectName: 'SpeakingPass',
             category: 'Design',
             description: 'English speaking test topic bank website design',
