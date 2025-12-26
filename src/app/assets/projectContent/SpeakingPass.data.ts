@@ -9,7 +9,7 @@ export const speakingPass: IProjectContent = {
         { channel: 'github', url: 'https://github.com/Mou2xie/SpeakingPass_v3' },
         { channel: 'website', url: 'https://www.speakingpass.com' },
     ],
-    image: [],
+    image: ['/projects/speakingpass/1.png', '/projects/speakingpass/2.png', '/projects/speakingpass/3.png', '/projects/speakingpass/4.png', '/projects/speakingpass/5.png',],
     content: `
         <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">My Role</h2>
         <p>

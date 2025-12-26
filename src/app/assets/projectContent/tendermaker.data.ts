@@ -5,7 +5,7 @@ export const tendermaker: IProjectContent = {
     projectName: 'n8n Tender Document Generator',
     description: 'AI workflow to generate tender document',
     links: [],
-    image: [],
+    image: ['/projects/tendermaker/1.png'],
     content: `
     <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">Workflow Overview</h2> <p>The Enterprise-Grade Bidding Document Synthesis System is a bespoke n8n automation project designed to generate professional, high-volume proposals. By integrating multi-model LLM orchestration with complex data processing, this system allows clients to transform raw project backgrounds into meticulously structured bidding documents. The input consists of tender requirements and project context, while the output is a fully formatted, professional proposal delivered via an automated email pipeline.</p>
 

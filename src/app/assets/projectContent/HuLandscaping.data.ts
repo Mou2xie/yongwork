@@ -9,7 +9,7 @@ export const HuLandscaping: IProjectContent = {
         { channel: 'github', url: 'https://github.com/Mou2xie/Hu_landscaping' },
         { channel: 'website', url: 'https://hu-landscaping.vercel.app/' },
     ],
-    image: [],
+    image: ['/projects/hu-landscaping/1.png', '/projects/hu-landscaping/2.png', '/projects/hu-landscaping/3.png', '/projects/hu-landscaping/4.png'],
     content: `
     <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">My Role</h2>
         <p>

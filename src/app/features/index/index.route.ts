@@ -41,10 +41,10 @@ export class Index {
             iconUrl: '/icons/vue.svg',
             label: 'Vue.js'
         },
-        {
-            iconUrl: '/icons/svelte.svg',
-            label: 'Svelte'
-        },
+        // {
+        //     iconUrl: '/icons/svelte.svg',
+        //     label: 'Svelte'
+        // },
         {
             iconUrl: '/icons/nextjs.svg',
             label: 'Next.js'
@@ -88,6 +88,21 @@ export class Index {
         },
     ];
 
+    protected aiStack: Stack[] = [
+        {
+            iconUrl: '/icons/langchain.png',
+            label: 'LangChain'
+        },
+        {
+            iconUrl: '/icons/n8n.svg',
+            label: 'n8n'
+        },
+        {
+            iconUrl: '/icons/stitch.svg',
+            label: 'Stitch'
+        },
+    ];
+
     protected databaseStack: Stack[] = [
         {
             iconUrl: '/icons/mysql.svg',
@@ -100,14 +115,7 @@ export class Index {
     ];
 
     protected toolsStack: Stack[] = [
-        {
-            iconUrl: '/icons/langchain.png',
-            label: 'LangChain'
-        },
-        {
-            iconUrl: '/icons/n8n.svg',
-            label: 'n8n'
-        },
+
         {
             iconUrl: '/icons/figma.svg',
             label: 'Figma'

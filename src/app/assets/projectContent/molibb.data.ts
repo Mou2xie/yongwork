@@ -8,7 +8,7 @@ export const molibb: IProjectContent = {
         { channel: 'github', url: 'https://github.com/Mou2xie/gameAccountManager/tree/main' },
         { channel: 'website', url: 'https://www.molibb.baby/' },
     ],
-    image: [],
+    image: ['/projects/molibb/1.png', '/projects/molibb/2.png', '/projects/molibb/3.png', '/projects/molibb/4.png', '/projects/molibb/5.png'],
     content: `
         <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">My Role</h2>
         <p>

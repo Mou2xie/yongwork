@@ -9,7 +9,7 @@ export const transider: IProjectContent = {
         { channel: 'github', url: 'https://github.com/Mou2xie/Transider_v2' },
         { channel: 'website', url: 'https://chromewebstore.google.com/detail/transider%E2%80%94%E2%80%94%E9%9A%8F%E6%89%8B%E8%AE%B0%E5%8D%95%E8%AF%8D/iepaohcnkdejgafdmdifpepgpdbphhlo?hl=zh-CN&utm_source=ext_sidebar' },
     ],
-    image: [],
+    image: ['/projects/transider/1.png', '/projects/transider/2.png', '/projects/transider/3.png', '/projects/transider/4.png', '/projects/transider/5.png'],
     content: `
     <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">My Role</h2>
         <p>

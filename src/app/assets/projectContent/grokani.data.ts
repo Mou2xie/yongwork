@@ -8,7 +8,7 @@ export const grokani: IProjectContent = {
         { channel: 'github', url: 'https://github.com/Mou2xie/grokAni' },
         { channel: 'website', url: 'https://grokani.love/' },
     ],
-    image: [],
+    image: ['/projects/grokani/1.png', '/projects/grokani/2.png', '/projects/grokani/3.png', '/projects/grokani/4.png', '/projects/grokani/5.png'],
     content: `
     <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">My Role</h2>
         <p>

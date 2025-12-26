@@ -68,6 +68,18 @@
     </div>
 
     <div class=" grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-0 my-20">
+        <div class=" font-anton text-highlight-text text-2xl lg:text-3xl lg:col-span-1">AI DEV</div>
+        <div class=" grid grid-cols-2 lg:grid-cols-4 gap-10 lg:col-span-2">
+            @for (stack of aiStack; track $index) {
+            <div class=" flex items-center gap-3">
+                <img src="{{ stack.iconUrl }}" alt="{{ stack.label }}" class=" w-10">
+                <p>{{ stack.label }}</p>
+            </div>
+            }
+        </div>
+    </div>
+
+    <div class=" grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-0 my-20">
         <div class=" font-anton text-highlight-text text-2xl lg:text-3xl lg:col-span-1">TOOLS</div>
         <div class=" grid grid-cols-2 lg:grid-cols-4 gap-10 lg:col-span-2">
             @for (stack of toolsStack; track $index) {

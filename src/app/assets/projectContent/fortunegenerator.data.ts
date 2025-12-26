@@ -5,7 +5,7 @@ export const fortunegenerator: IProjectContent = {
     projectName: 'n8n Fortune Generator',
     description: 'Generate fortunes for users of horoscopechinois.today',
     links: [],
-    image: [],
+    image: ['/projects/fortunegenerator/1.png', '/projects/fortunegenerator/2.png'],
     content: `
     <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">Workflow Overview</h2>
 <p>The Fortune Generator is a sophisticated automated pipeline designed to bridge traditional Chinese horoscopes with modern lifestyle content. It solves the challenge of generating high-volume, structured, and stylistically consistent editorial content by leveraging LLMs. The workflow takes user-defined date ranges and scopes (daily, weekly, monthly, or yearly) as input and outputs fully validated, multi-dimensional fortune data directly into a Supabase database for application consumption.</p>

@@ -5,7 +5,7 @@ export const keywordsExplainer: IProjectContent = {
     projectName: 'n8n Google Trends Keywords Tool',
     description: 'Find product idea from Google Trends keywords',
     links: [],
-    image: [],
+    image: ['/projects/keywordexplainer/1.png', '/projects/keywordexplainer/2.png'],
     content: `
     <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">Workflow Overview</h2>
 <p>This automated pipeline is engineered to streamline SEO keyword research by transforming raw Google search trend data into actionable marketing insights. It addresses the bottleneck of manual keyword analysis by automating the ingestion of CSV files, performing complex data normalization, and utilizing Large Language Models (LLMs) to interpret user intent. The input is a raw CSV file containing trending keywords and metrics, while the output is a structured, enriched CSV report detailing keyword explanations and psychological search intent.</p>
