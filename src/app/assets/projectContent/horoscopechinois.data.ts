@@ -5,9 +5,10 @@ export const horoscopechinois: IProjectContent = {
     projectName: 'horoscopechinois.today (fr)',
     description: 'Online Chinese traditional astrology',
     links: [
+        { channel: 'github', url: 'https://github.com/Mou2xie/HoroscopeChinois' },
         { channel: 'website', url: 'https://www.horoscopechinois.today/' },
     ],
-    image: [],
+    image: ['/projects/horoscopechinois/1.png', '/projects/horoscopechinois/2.png', '/projects/horoscopechinois/3.png', '/projects/horoscopechinois/4.png', '/projects/horoscopechinois/5.png'],
     content: `
     <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">My Role</h2>
         <p>
