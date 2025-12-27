@@ -9,7 +9,7 @@ export const lingoPick: IProjectContent = {
         { channel: 'github', url: 'https://github.com/Mou2xie/lingoPick_public' },
         { channel: 'website', url: 'https://www.lingopick.net/' },
     ],
-    image: ['/projects/lingopick/1.png', '/projects/lingopick/2.png', '/projects/lingopick/3.png', '/projects/lingopick/4.png', '/projects/lingopick/5.png', '/projects/lingopick/6.png'],
+    image: ['/projects/lingopick/1.png', '/projects/lingopick/2.png', '/projects/lingopick/3.png', '/projects/lingopick/4.png', '/projects/lingopick/5.png'],
     content: `
         <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">My Role</h2>
         <p>
