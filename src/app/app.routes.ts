@@ -14,22 +14,27 @@ export const routes: Routes = [
             {
                 path: '',
                 component: Index,
+                title: 'YongXie - Home',
             },
             {
                 path: 'portfolio',
                 component: Portfolio,
+                title: 'YongXie - Portfolio',
             },
             {
                 path: 'about-me',
                 component: AboutMe,
+                title: 'YongXie - About Me',
             },
             {
                 path: 'contact',
                 component: Contact,
+                title: 'YongXie - Contact',
             },
             {
                 path: 'detail/:id',
                 component: Detail,
+                title: 'YongXie - Detail',
             },
         ],
     },
