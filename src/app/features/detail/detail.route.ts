@@ -1,7 +1,7 @@
 import { Component, inject, signal } from "@angular/core";
 import { toSignal } from "@angular/core/rxjs-interop";
 import { ActivatedRoute } from "@angular/router";
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import type { IProjectContent } from "../../assets/projectContent/IProjectContent";
 
 @Component({
@@ -11,11 +11,12 @@ import type { IProjectContent } from "../../assets/projectContent/IProjectConten
 export class Detail {
 
     private activatedRoute = inject(ActivatedRoute);
+    protected currentIndex = signal(0);
 
     protected pageContent = toSignal(this.activatedRoute.data.pipe(
+        tap(() => this.currentIndex.set(0)),
         map(data => data['projectContent'])
     ), { initialValue: this.activatedRoute.snapshot.data['projectContent'] });
-    protected currentIndex = signal(0);
 
 
     constructor() {
