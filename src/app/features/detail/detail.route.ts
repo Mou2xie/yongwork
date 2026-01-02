@@ -14,7 +14,7 @@ export class Detail {
 
     protected pageContent = toSignal(this.activatedRoute.data.pipe(
         map(data => data['projectContent'])
-    ));
+    ), { initialValue: this.activatedRoute.snapshot.data['projectContent'] });
     protected currentIndex = signal(0);
 
 
