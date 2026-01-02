@@ -14,11 +14,12 @@ export class ProductListItem {
     private router = inject(Router);
 
     protected navigateToProject() {
-        const url = this.projectInfo().url
-            ? this.projectInfo().url
-            : this.router.serializeUrl(this.router.createUrlTree(['/detail', this.projectInfo().id]));
-
-        window.open(url, '_blank');
+        const url = this.projectInfo().url;
+        if (url) {
+            window.open(url, '_blank');
+        } else {
+            this.router.navigate(['/detail', this.projectInfo().id]);
+        }
     }
 
 }
