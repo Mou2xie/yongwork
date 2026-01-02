@@ -1,6 +1,7 @@
 import { Component, inject, signal } from "@angular/core";
+import { toSignal } from "@angular/core/rxjs-interop";
 import { ActivatedRoute } from "@angular/router";
-import { ProjectContentService } from "../../core/services/projectContentService.service";
+import { map } from 'rxjs/operators';
 import type { IProjectContent } from "../../assets/projectContent/IProjectContent";
 
 @Component({
@@ -10,15 +11,14 @@ import type { IProjectContent } from "../../assets/projectContent/IProjectConten
 export class Detail {
 
     private activatedRoute = inject(ActivatedRoute);
-    private projectContentService = inject(ProjectContentService);
 
-    protected pageContent = signal<IProjectContent | undefined>(undefined);
+    protected pageContent = toSignal(this.activatedRoute.data.pipe(
+        map(data => data['projectContent'])
+    ));
     protected currentIndex = signal(0);
 
 
     constructor() {
-        const projectId = Number(this.activatedRoute.snapshot.paramMap.get('id')!);
-        this.pageContent.set(this.projectContentService.getProjectContent(projectId))
     }
 
     protected nextImage() {

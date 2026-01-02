@@ -67,6 +67,10 @@ export class Index {
             label: 'Node.js'
         },
         {
+            iconUrl: '/icons/python.svg',
+            label: 'Python'
+        },
+        {
             iconUrl: '/icons/express.svg',
             label: 'Express'
         },

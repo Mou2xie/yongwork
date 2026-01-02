@@ -5,6 +5,7 @@ import { Portfolio } from './features/portfolio/portfolio.route';
 import { AboutMe } from './features/about-me/about-me.route';
 import { Contact } from './features/contact/contact.route';
 import { Detail } from './features/detail/detail.route';
+import { projectResolver } from './features/detail/project.resolver';
 
 export const routes: Routes = [
     {
@@ -35,6 +36,9 @@ export const routes: Routes = [
                 path: 'detail/:id',
                 component: Detail,
                 title: 'YongXie - Detail',
+                resolve: {
+                    projectContent: projectResolver
+                }
             },
         ],
     },
