@@ -3,6 +3,7 @@ import { Title } from "../../shared/components/title/title.component";
 import { ProductListItem } from "../../shared/components/product-list-item/product-list-item.component";
 import { ContentSection } from "../../shared/components/content-section/content-section.component";
 import { PortfolioService } from "../../core/services/portfolioService.service";
+import { QuestionComponent } from "../../shared/components/question/question.component";
 
 interface Stack {
     iconUrl: string;
@@ -12,7 +13,7 @@ interface Stack {
 @Component({
     selector: 'app-index',
     templateUrl: './index.html',
-    imports: [Title, ProductListItem, ContentSection],
+    imports: [Title, ProductListItem, ContentSection, QuestionComponent],
 })
 export class Index {
 
@@ -41,10 +42,10 @@ export class Index {
             iconUrl: '/icons/vue.svg',
             label: 'Vue.js'
         },
-        // {
-        //     iconUrl: '/icons/svelte.svg',
-        //     label: 'Svelte'
-        // },
+        {
+            iconUrl: '/icons/svelte.svg',
+            label: 'Svelte'
+        },
         {
             iconUrl: '/icons/nextjs.svg',
             label: 'Next.js'
@@ -101,10 +102,6 @@ export class Index {
             iconUrl: '/icons/n8n.svg',
             label: 'n8n'
         },
-        {
-            iconUrl: '/icons/stitch.svg',
-            label: 'Stitch'
-        },
     ];
 
     protected databaseStack: Stack[] = [
@@ -127,6 +124,10 @@ export class Index {
         {
             iconUrl: '/icons/notion.svg',
             label: 'Notion'
+        },
+        {
+            iconUrl: '/icons/stitch.svg',
+            label: 'Stitch'
         },
     ];
 }    

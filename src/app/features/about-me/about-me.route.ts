@@ -1,11 +1,13 @@
 import { Component } from "@angular/core";
 import { Title } from "../../shared/components/title/title.component";
 import { ContentSection } from "../../shared/components/content-section/content-section.component";
+import { QuestionComponent } from "../../shared/components/question/question.component";
+
 
 @Component({
     selector: 'app-about-me',
     templateUrl: './about-me.html',
-    imports: [Title, ContentSection]
+    imports: [Title, ContentSection, QuestionComponent]
 })
 export class AboutMe {
 

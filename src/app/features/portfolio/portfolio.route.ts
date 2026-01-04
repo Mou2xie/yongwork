@@ -3,11 +3,12 @@ import { ProductListItem } from "../../shared/components/product-list-item/produ
 import { ContentSection } from "../../shared/components/content-section/content-section.component";
 import { PortfolioService } from "../../core/services/portfolioService.service";
 import type { Category } from "../../core/services/portfolioService.service";
+import { QuestionComponent } from "../../shared/components/question/question.component";
 
 @Component({
     selector: 'app-portfolio',
     templateUrl: './portfolio.html',
-    imports: [ProductListItem, ContentSection],
+    imports: [ProductListItem, ContentSection, QuestionComponent],
 })
 export class Portfolio {
 

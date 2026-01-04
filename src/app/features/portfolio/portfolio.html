@@ -8,6 +8,9 @@
             problem—combining product strategy, user-centric design, and robust engineering to deliver complete,
             shipping solutions.
         </p>
+        <app-question>
+            <p>Curious about my favorite project? Just ask.</p>
+        </app-question>
     </div>
 </app-content-section>
 
@@ -20,6 +23,12 @@
                 [class.text-white]=" category === selectedCategory()" (click)="setSelectedCategory(category)">
                 {{category}}</div>
             }
+            <a href="https://github.com/Mou2xie" target="_blank"
+                class=" cursor-pointer hover:text-highlight-text transition-colors duration-200 flex items-center gap-0.5">
+                GitHub
+                <img src="/images/share.svg" alt="go to github" class=" w-6 h-6">
+            </a>
+
         </div>
     </aside>
 
