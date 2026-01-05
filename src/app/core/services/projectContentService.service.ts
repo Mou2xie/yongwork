@@ -11,6 +11,7 @@ import { yongwork } from "../../assets/projectContent/yongwork.data";
 import { fortunegenerator } from "../../assets/projectContent/fortunegenerator.data";
 import { keywordsExplainer } from "../../assets/projectContent/keywordsexplainer.data";
 import { tendermaker } from "../../assets/projectContent/tendermaker.data";
+import { agentyong } from "../../assets/projectContent/agentyong.data";
 
 @Injectable({
     providedIn: 'root'
@@ -31,6 +32,7 @@ export class ProjectContentService {
         tendermaker,
         fortunegenerator,
         keywordsExplainer,
+        agentyong,
     ];
 
     public getProjectContent(id: number): IProjectContent | undefined {

@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 
-export type Category = 'Web APP' | 'Mobile APP' | 'AI Workflow' | 'Design' | 'PRD';
+export type Category = 'Web APP' | 'Mobile APP' | 'AI' | 'Design' | 'PRD';
 
 export type Platform = 'Web' | 'Mobile' | 'Desktop' | 'Extension' | undefined;
 
@@ -20,7 +20,7 @@ export interface Project {
 })
 export class PortfolioService {
 
-    private readonly _portfolioCategories: Category[] = ['Web APP', 'AI Workflow', 'Design'];
+    private readonly _portfolioCategories: Category[] = ['Web APP', 'AI', 'Design'];
 
     private readonly _portfolioProjects: Project[] = [
 
@@ -50,7 +50,7 @@ export class PortfolioService {
             description: 'Free En-Ch in-page translator',
             cover: '/projects/transider/cover.png',
             platform: ['Extension'],
-            featured: true,
+            featured: false,
         },
         {
             id: 4,
@@ -102,7 +102,7 @@ export class PortfolioService {
         {
             id: 300,
             projectName: 'n8n Tender Document Generator',
-            category: 'AI Workflow',
+            category: 'AI',
             description: 'AI workflow to generate tender document',
             cover: '/projects/tendermaker/cover.png',
             platform: [],
@@ -111,7 +111,7 @@ export class PortfolioService {
         {
             id: 301,
             projectName: 'n8n Fortune Generator',
-            category: 'AI Workflow',
+            category: 'AI',
             description: 'Generate poetry fortunes for horoscopechinois.today',
             cover: '/projects/fortunegenerator/cover.png',
             platform: [],
@@ -120,11 +120,20 @@ export class PortfolioService {
         {
             id: 302,
             projectName: 'n8n Google Trends Keywords Tool',
-            category: 'AI Workflow',
+            category: 'AI',
             description: 'Find product idea from Google Trends keywords',
             cover: '/projects/keywordexplainer/cover.png',
             platform: [],
             featured: false,
+        },
+        {
+            id: 303,
+            projectName: 'Agent Yong',
+            category: 'AI',
+            description: 'My online digital twin',
+            cover: '/projects/agentyong/cover.png',
+            platform: ['Web'],
+            featured: true,
         },
 
 
