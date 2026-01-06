@@ -38,10 +38,10 @@ export class Index {
             iconUrl: '/icons/angular.svg',
             label: 'Angular'
         },
-        {
-            iconUrl: '/icons/vue.svg',
-            label: 'Vue.js'
-        },
+        // {
+        //     iconUrl: '/icons/vue.svg',
+        //     label: 'Vue.js'
+        // },
         {
             iconUrl: '/icons/svelte.svg',
             label: 'Svelte'
@@ -75,10 +75,10 @@ export class Index {
             iconUrl: '/icons/express.svg',
             label: 'Express'
         },
-        {
-            iconUrl: '/icons/nestjs.svg',
-            label: 'Nest.js'
-        },
+        // {
+        //     iconUrl: '/icons/nestjs.svg',
+        //     label: 'Nest.js'
+        // },
         {
             iconUrl: '/icons/php.svg',
             label: 'PHP'
@@ -97,6 +97,10 @@ export class Index {
         {
             iconUrl: '/icons/langchain.png',
             label: 'LangChain'
+        },
+        {
+            iconUrl: '/icons/langchain.png',
+            label: 'LangGraph'
         },
         {
             iconUrl: '/icons/n8n.svg',
@@ -124,6 +128,10 @@ export class Index {
         {
             iconUrl: '/icons/notion.svg',
             label: 'Notion'
+        },
+        {
+            iconUrl: '/icons/git.svg',
+            label: 'Git'
         },
         {
             iconUrl: '/icons/stitch.svg',
