@@ -21,7 +21,7 @@ export const agentyong: IProjectContent = {
 
         <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">Key Product Decisions</h2>
         <p>1) <strong>Trust over Talk:</strong> I decided to implement a <strong>Tool-Use architecture</strong> rather than relying on pure LLM generation. This ensures the agent only provides "hallucination-free" answers based on my actual project files and resume. 
-        2) <strong>Performance First:</strong> I chose <strong>Gemini Flash</strong> via OpenRouter to balance high-level reasoning with extremely low latency, ensuring the recruiter’s experience is snappy and responsive. 
+        2) <strong>Performance First:</strong> I chose <strong>DeepSeek V4.1 Flash</strong> via OpenRouter to balance high-level reasoning with extremely low latency, ensuring the recruiter’s experience is snappy and responsive. 
         3) <strong>Mobile-First Accessibility:</strong> Recognizing that many recruiters browse profiles on the go, I prioritized a responsive Tailwind-based design to ensure a seamless experience across all devices.</p>
 
         <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">Technical Implementation</h2>
