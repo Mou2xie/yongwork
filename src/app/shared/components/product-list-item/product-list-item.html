@@ -1,32 +1,82 @@
-<div class=" hover:cursor-pointer" (click)="navigateToProject()">
-    <img [src]="projectInfo().cover" class=" w-full h-60 object-cover" />
-    <div class=" mt-3">
-        <p class=" text-2xl font-anton text-highlight-text">{{projectInfo().projectName}}</p>
-        <p class=" line-clamp-1">{{projectInfo().description}}</p>
-        <div class=" flex items-center gap-3">
-            @for(item of projectInfo().platform; track item){
-            <div class=" flex items-center gap-1">
-                @switch(item){
-                @case('Web'){
-                <img src="/images/chrome.svg" alt="chrome-icon" class=" w-5">
+<!--
+  The whole card is a real link: focusable, keyboard operable, middle-clickable,
+  and crawlable.
+
+  The two destinations are rendered as separate branches on purpose. Binding
+  `href` to null would suppress the href that RouterLink generates, leaving a
+  focusable anchor with no destination, so the internal case uses only
+  `routerLink` (which writes its own href) and the external case uses only a
+  plain `href`.
+-->
+@if (externalUrl(); as url) {
+<a
+    class="block group focus:outline-none"
+    [attr.aria-label]="ariaLabel()"
+    [href]="url"
+    target="_blank"
+    rel="noopener noreferrer"
+>
+    <ng-container *ngTemplateOutlet="cardBody"></ng-container>
+</a>
+} @else {
+<a
+    class="block group focus:outline-none"
+    [attr.aria-label]="ariaLabel()"
+    [routerLink]="detailPath()"
+>
+    <ng-container *ngTemplateOutlet="cardBody"></ng-container>
+</a>
+}
+
+<ng-template #cardBody>
+    <img
+        [src]="projectInfo().cover"
+        [alt]="projectInfo().projectName + ' cover image'"
+        class="w-full h-60 object-cover rounded-sm transition-transform duration-300 group-hover:scale-[1.02] group-focus-visible:outline group-focus-visible:outline-2 group-focus-visible:outline-accent"
+    />
+    <div class="mt-3">
+        <div class="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+            <p class="text-2xl font-anton text-highlight-text group-hover:text-accent transition-colors duration-200">
+                {{ projectInfo().projectName }}
+            </p>
+            @if (scopeLabel()) {
+            <span class="text-[0.7rem] uppercase tracking-wide text-accent border border-accent/40 rounded-full px-2 py-0.5">
+                {{ scopeLabel() }}
+            </span>
+            }
+        </div>
+        <p class="line-clamp-2">{{ projectInfo().description }}</p>
+        @if (highlight()) {
+        <p class="text-sm text-highlight-text/80">{{ highlight() }}</p>
+        }
+        <div class="flex flex-wrap items-center gap-3">
+            @for (item of projectInfo().platform; track item) {
+            <div class="flex items-center gap-1">
+                @switch (item) {
+                @case ('Web') {
+                <img src="/images/chrome.svg" alt="" aria-hidden="true" class="w-5" />
                 <div>Website</div>
                 }
-                @case('Extension'){
-                <img src="/images/plugin.svg" alt="plugin-icon" class=" w-5">
+                @case ('Extension') {
+                <img src="/images/plugin.svg" alt="" aria-hidden="true" class="w-5" />
                 <div>Extension</div>
                 }
-                @case('Mobile'){
-                <img src="/images/mobile-icon.svg" alt="mobile-icon" class=" w-5">
+                @case ('Mobile') {
+                <img src="/images/mobile-icon.svg" alt="" aria-hidden="true" class="w-5" />
                 <div>Mobile</div>
                 }
-                @case('Desktop'){
-                <img src="/images/desktop.svg" alt="desktop-icon" class=" w-5">
+                @case ('Desktop') {
+                <img src="/images/desktop.svg" alt="" aria-hidden="true" class="w-5" />
                 <div>Desktop</div>
                 }
-                @default{}
+                @case ('CLI') {
+                <div class="font-mono text-accent" aria-hidden="true">&gt;_</div>
+                <div>CLI</div>
+                }
+                @default {}
                 }
             </div>
             }
         </div>
     </div>
-</div>
+</ng-template>

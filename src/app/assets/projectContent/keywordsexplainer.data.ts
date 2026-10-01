@@ -3,7 +3,10 @@ import type { IProjectContent } from "./IProjectContent";
 export const keywordsExplainer: IProjectContent = {
     id: 302,
     projectName: 'n8n Google Trends Keywords Tool',
-    description: 'Find product idea from Google Trends keywords',
+    description: 'Pipeline that turns Google Trends exports into explained, intent-tagged keyword reports',
+    role: 'Workflow Designer · Automation Developer',
+    status: 'Delivered',
+    teamSize: 1,
     links: [],
     image: ['/projects/keywordexplainer/1.png', '/projects/keywordexplainer/2.png'],
     content: `

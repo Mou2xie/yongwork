@@ -3,7 +3,12 @@ import type { IProjectContent } from "./IProjectContent";
 export const grokani: IProjectContent = {
     id: 5,
     projectName: 'grokani.love',
-    description: 'Guide book for building affection with Ani',
+    description: 'Guide and prompt library for the Grok companion Ani',
+    role: 'Indie Developer',
+    status: 'Live',
+    teamSize: 1,
+    scopeNote:
+        'Retained for provenance. Per the Facts library this project is default-excluded from public portfolio summaries and product counts, so it is not listed in the portfolio.',
     links: [
         { channel: 'github', url: 'https://github.com/Mou2xie/grokAni' },
         { channel: 'website', url: 'https://grokani.love/' },

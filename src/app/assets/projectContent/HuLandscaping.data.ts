@@ -3,7 +3,12 @@ import type { IProjectContent } from "./IProjectContent";
 export const HuLandscaping: IProjectContent = {
     id: 8,
     projectName: 'Hu-Landscaping',
-    description: 'Landscaping company landing page',
+    description: 'Landscaping company landing page focused on trust signals and lead generation',
+    role: 'Full-Stack Developer · Digital Strategist',
+    status: 'Live',
+    teamSize: 1,
+    scopeNote:
+        'A client landing page. Documented implementation scope covers the site itself; no traffic, conversion or revenue outcome is recorded.',
     links: [
         { channel: 'figma', url: 'https://www.figma.com/design/VyjIEhZKMRNYoA5QdTI1Kd/Hu-landscaping?t=bwrDn0Q8boYFOwXn-1' },
         { channel: 'github', url: 'https://github.com/Mou2xie/Hu_landscaping' },

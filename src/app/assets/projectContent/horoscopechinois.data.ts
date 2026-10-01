@@ -2,8 +2,13 @@ import type { IProjectContent } from "./IProjectContent";
 
 export const horoscopechinois: IProjectContent = {
     id: 4,
-    projectName: 'horoscopechinois.today (fr)',
-    description: 'Online Chinese traditional astrology',
+    projectName: 'horoscopechinois.today',
+    description: 'French-language Chinese astrology site with server-rendered, database-backed daily content',
+    role: 'Indie Developer',
+    status: 'Live',
+    teamSize: 1,
+    scopeNote:
+        'Independently built and operated, targeting a gap for well-presented Chinese astrology content in the French-language market.',
     links: [
         { channel: 'github', url: 'https://github.com/Mou2xie/HoroscopeChinois' },
         { channel: 'website', url: 'https://www.horoscopechinois.today/' },

@@ -1,25 +1,35 @@
-import { Component, input } from "@angular/core";
-import type { Project } from "../../../core/services/portfolioService.service";
-import { Router } from "@angular/router";
-import { inject } from "@angular/core";
+import { Component, computed, input } from '@angular/core';
+import { NgTemplateOutlet } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import type { Project } from '../../../core/services/portfolioService.service';
 
 @Component({
     selector: 'app-product-list-item',
     templateUrl: './product-list-item.html',
+    imports: [RouterLink, NgTemplateOutlet],
 })
 export class ProductListItem {
-
     public readonly projectInfo = input.required<Project>();
 
-    private router = inject(Router);
+    /**
+     * External destination when the project has one (design artifacts link to
+     * Figma), otherwise null so the card renders an internal router link.
+     */
+    protected readonly externalUrl = computed(() => this.projectInfo().url ?? null);
 
-    protected navigateToProject() {
-        const url = this.projectInfo().url;
-        if (url) {
-            window.open(url, '_blank');
-        } else {
-            this.router.navigate(['/detail', this.projectInfo().id]);
-        }
-    }
+    /** Internal case-study path, used as the router link target. */
+    protected readonly detailPath = computed(() => `/detail/${this.projectInfo().id}`);
 
+    /** Accessible name, since the card's meaning is conveyed visually. */
+    protected readonly ariaLabel = computed(() => {
+        const project = this.projectInfo();
+        const destination = project.url ? 'external design file' : 'case study';
+        return `${project.projectName} — ${project.description}. Opens ${destination}.`;
+    });
+
+    /** Optional scope/status chip, e.g. "Team Capstone · 5 people". */
+    protected readonly scopeLabel = computed(() => this.projectInfo().scopeLabel ?? null);
+
+    /** Optional evidence line, e.g. a metric or award. */
+    protected readonly highlight = computed(() => this.projectInfo().highlight ?? null);
 }

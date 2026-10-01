@@ -1,141 +1,44 @@
-import { Component, inject } from "@angular/core";
-import { Title } from "../../shared/components/title/title.component";
-import { ProductListItem } from "../../shared/components/product-list-item/product-list-item.component";
-import { ContentSection } from "../../shared/components/content-section/content-section.component";
-import { PortfolioService } from "../../core/services/portfolioService.service";
-import { QuestionComponent } from "../../shared/components/question/question.component";
-
-interface Stack {
-    iconUrl: string;
-    label: string;
-}
+import { Component, inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { Title } from '../../shared/components/title/title.component';
+import { ProductListItem } from '../../shared/components/product-list-item/product-list-item.component';
+import { ContentSection } from '../../shared/components/content-section/content-section.component';
+import { PortfolioService } from '../../core/services/portfolioService.service';
+import { QuestionComponent } from '../../shared/components/question/question.component';
+import { AWARDS, PROFILE } from '../../core/data/profile.data';
+import { HOME_SKILL_GROUPS, SKILLS } from '../../core/data/skills.data';
+import type { Skill, SkillGroup } from '../../core/data/skills.data';
 
 @Component({
     selector: 'app-index',
     templateUrl: './index.html',
-    imports: [Title, ProductListItem, ContentSection, QuestionComponent],
+    imports: [Title, ProductListItem, ContentSection, QuestionComponent, RouterLink],
 })
 export class Index {
+    protected readonly profile = PROFILE;
 
-    protected readonly portfolioService = inject(PortfolioService);
+    protected readonly awards = AWARDS;
 
+    private portfolioService = inject(PortfolioService);
+
+    /** Explicit featured ordering: NovaAgent → Agent Yong → SpeakingPass. */
     protected readonly featuredProjects = this.portfolioService.getFeaturedProjects();
 
-    protected frontendStack: Stack[] = [
-        {
-            iconUrl: '/icons/javascript.svg',
-            label: 'JavaScript'
-        },
-        {
-            iconUrl: '/icons/typescript.svg',
-            label: 'TypeScript'
-        },
-        {
-            iconUrl: '/icons/react.svg',
-            label: 'React'
-        },
-        {
-            iconUrl: '/icons/angular.svg',
-            label: 'Angular'
-        },
-        // {
-        //     iconUrl: '/icons/vue.svg',
-        //     label: 'Vue.js'
-        // },
-        {
-            iconUrl: '/icons/svelte.svg',
-            label: 'Svelte'
-        },
-        {
-            iconUrl: '/icons/nextjs.svg',
-            label: 'Next.js'
-        },
-        {
-            iconUrl: '/icons/nuxt.svg',
-            label: 'Nuxt.js'
-        }, {
-            iconUrl: '/icons/expo.svg',
-            label: 'Expo'
-        }, {
-            iconUrl: '/icons/tailwindcss.svg',
-            label: 'TailwindCSS'
-        }
-    ];
+    /**
+     * Home-page stack, grouped by capability direction. Only `core` and
+     * `practice` tiers appear here; familiarity and coursework live on About.
+     * Order follows `HOME_SKILL_GROUPS` so the most central capability leads.
+     */
+    protected readonly skillGroups = this.buildSkillGroups();
 
-    protected backendStack: Stack[] = [
-        {
-            iconUrl: '/icons/nodejs.svg',
-            label: 'Node.js'
-        },
-        {
-            iconUrl: '/icons/python.svg',
-            label: 'Python'
-        },
-        {
-            iconUrl: '/icons/express.svg',
-            label: 'Express'
-        },
-        // {
-        //     iconUrl: '/icons/nestjs.svg',
-        //     label: 'Nest.js'
-        // },
-        {
-            iconUrl: '/icons/php.svg',
-            label: 'PHP'
-        },
-        {
-            iconUrl: '/icons/supabase.svg',
-            label: 'Supabase'
-        },
-        {
-            iconUrl: '/icons/vercel.svg',
-            label: 'Vercel'
-        },
-    ];
-
-    protected aiStack: Stack[] = [
-        {
-            iconUrl: '/icons/langchain.png',
-            label: 'LangChain'
-        },
-        {
-            iconUrl: '/icons/langchain.png',
-            label: 'LangGraph'
-        },
-        {
-            iconUrl: '/icons/n8n.svg',
-            label: 'n8n'
-        },
-    ];
-
-    protected databaseStack: Stack[] = [
-        {
-            iconUrl: '/icons/mysql.svg',
-            label: 'MySQL'
-        },
-        {
-            iconUrl: '/icons/mongo.svg',
-            label: 'MongoDB'
-        },
-    ];
-
-    protected toolsStack: Stack[] = [
-
-        {
-            iconUrl: '/icons/figma.svg',
-            label: 'Figma'
-        },
-        {
-            iconUrl: '/icons/notion.svg',
-            label: 'Notion'
-        },
-        {
-            iconUrl: '/icons/git.svg',
-            label: 'Git'
-        },
-        {
-            iconUrl: '/icons/stitch.svg',
-            label: 'Stitch'
-        },
-    ];
-}    
+    private buildSkillGroups(): { title: SkillGroup; skills: Skill[] }[] {
+        return HOME_SKILL_GROUPS.map((title) => ({
+            title,
+            skills: SKILLS.filter(
+                (skill) =>
+                    skill.group === title &&
+                    (skill.tier === 'core' || skill.tier === 'practice'),
+            ),
+        })).filter((group) => group.skills.length > 0);
+    }
+}

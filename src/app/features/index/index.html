@@ -1,29 +1,37 @@
+<!-- 1. Positioning -->
 <app-content-section class="flex flex-col-reverse lg:flex-row lg:items-center gap-5 lg:gap-0">
-    <div class=" space-y-3 lg:grow lg:mt-20 ">
-        <h1 class=" text-3xl lg:text-5xl font-bold font-anton text-highlight-text">More Than a
-            <span class=" text-accent">Developer</span>
+    <div class="space-y-3 lg:grow lg:mt-20">
+        <h1 class="text-3xl lg:text-5xl font-bold font-anton text-highlight-text">
+            Applied AI &amp;
+            <span class="text-accent">Full-Stack</span>
+            Developer
         </h1>
-        <p class="lg:text-lg">Hi, I'm Yong Xie — a
-            <span class=" text-highlight-text font-semibold">Product Manager</span> turned <span
-                class="text-highlight-text font-semibold">Developer</span>.
-            I combine years of product strategy with full-stack engineering to build applications that align
-            business goals with technical execution.
-        </p>
+        <p class="lg:text-lg">{{ profile.intro }}</p>
+        <div class="flex flex-wrap items-center gap-3 pt-2">
+            <a routerLink="/portfolio"
+                class="px-6 py-3 bg-accent text-bg font-semibold cursor-pointer hover:opacity-80 transition-opacity duration-300">
+                View Projects
+            </a>
+            <a routerLink="/contact"
+                class="px-6 py-3 border border-accent text-accent font-semibold cursor-pointer hover:bg-accent/10 transition-colors duration-300">
+                Contact Me
+            </a>
+        </div>
+        <p class="text-sm pt-1">{{ profile.availability }} · {{ profile.workAuth }}</p>
     </div>
-    <img src="/images/hero-img.png" alt="hero-img" class=" w-50 lg:w-64 self-center lg:self-start  lg:grow-0">
+    <img src="/images/hero-img.png" alt="Illustration of Yongjie Xie" class="w-50 lg:w-64 self-center lg:self-start lg:grow-0" />
 </app-content-section>
 
-<app-content-section class=" grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-0">
-    <div class=" lg:col-span-1">
-        <p class=" text-2xl lg:text-3xl text-highlight-text">Yong Xie</p>
-        <p class=" text-2xl lg:text-3xl opacity-30 font-sans">谢 永杰</p>
+<!-- 2. Brief background -->
+<app-content-section class="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-0">
+    <div class="lg:col-span-1">
+        <p class="text-2xl lg:text-3xl text-highlight-text">{{ profile.name }}</p>
+        <p class="text-2xl lg:text-3xl opacity-30 font-sans">{{ profile.nameLocal }}</p>
     </div>
-    <div class=" lg:col-span-2">
+    <div class="lg:col-span-2">
         <p>
-            With 10+ years in Product Management, I bring a unique dual perspective to Full-stack Development.
-            Beyond coding, I specialize in strategy, architecture, and design. I independently own the full
-            lifecycle—from concept to deployment—bridging the gap between engineering and business to balance UX
-            with strategic goals.
+            {{ profile.summary }} I bring 10+ years of product-management experience to the
+            problems I choose and the experiences I design, and I ship the result myself.
         </p>
         <app-question question="Tell me the story of how you transitioned from Product Management to Development.">
             <p>Ask me about my 'PM to Dev' story</p>
@@ -31,112 +39,95 @@
     </div>
 </app-content-section>
 
-<app-content-section>
-    <app-title>MY STACK</app-title>
-
-    <div class=" grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-0 mb-25">
-        <div class=" font-anton text-highlight-text text-2xl lg:text-3xl lg:col-span-1">FRONTEND</div>
-        <div class=" grid grid-cols-2 lg:grid-cols-4 gap-10 lg:col-span-2">
-            @for (stack of frontendStack; track $index) {
-            <div class=" flex items-center gap-3">
-                <img src="{{ stack.iconUrl }}" alt="{{ stack.label }}" class=" w-10">
-                <p>{{ stack.label }}</p>
-            </div>
-            }
-        </div>
-    </div>
-
-    <div class=" grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-0 my-20">
-        <div class=" font-anton text-highlight-text text-2xl lg:text-3xl lg:col-span-1">BACKEND</div>
-        <div class=" grid grid-cols-2 lg:grid-cols-4 gap-10 lg:col-span-2">
-            @for (stack of backendStack; track $index) {
-            <div class=" flex items-center gap-3">
-                <img src="{{ stack.iconUrl }}" alt="{{ stack.label }}" class=" w-10">
-                <p>{{ stack.label }}</p>
-            </div>
-            }
-        </div>
-    </div>
-
-    <div class=" grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-0 my-20">
-        <div class=" font-anton text-highlight-text text-2xl lg:text-3xl lg:col-span-1">DATABASE</div>
-        <div class=" grid grid-cols-2 lg:grid-cols-4 gap-10 lg:col-span-2">
-            @for (stack of databaseStack; track $index) {
-            <div class=" flex items-center gap-3">
-                <img src="{{ stack.iconUrl }}" alt="{{ stack.label }}" class=" w-10">
-                <p>{{ stack.label }}</p>
-            </div>
-            }
-        </div>
-    </div>
-
-    <div class=" grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-0 my-20">
-        <div class=" font-anton text-highlight-text text-2xl lg:text-3xl lg:col-span-1">AI DEV</div>
-        <div class=" grid grid-cols-2 lg:grid-cols-4 gap-10 lg:col-span-2">
-            @for (stack of aiStack; track $index) {
-            <div class=" flex items-center gap-3">
-                <img src="{{ stack.iconUrl }}" alt="{{ stack.label }}" class=" w-10">
-                <p>{{ stack.label }}</p>
-            </div>
-            }
-        </div>
-    </div>
-
-    <div class=" grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-0 my-20">
-        <div class=" font-anton text-highlight-text text-2xl lg:text-3xl lg:col-span-1">TOOLS</div>
-        <div class=" grid grid-cols-2 lg:grid-cols-4 gap-10 lg:col-span-2">
-            @for (stack of toolsStack; track $index) {
-            <div class=" flex items-center gap-3">
-                <img src="{{ stack.iconUrl }}" alt="{{ stack.label }}" class=" w-10">
-                <p>{{ stack.label }}</p>
-            </div>
-            }
-        </div>
-    </div>
-</app-content-section>
-
+<!-- 3. Featured projects come before the stack, so work leads over logos -->
 <app-content-section>
     <app-title>FEATURED PROJECTS</app-title>
-    <div class=" grid grid-cols-1 lg:grid-cols-3 gap-8">
-        @for (item of featuredProjects; track $index) {
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        @for (item of featuredProjects; track item.id) {
         <app-product-list-item [projectInfo]="item"></app-product-list-item>
         }
     </div>
-    <div class=" text-center mt-15">
-        <a href="/portfolio"
-            class=" px-6 py-3 bg-accent text-bg font-semibold cursor-pointer hover:opacity-80 transition-opacity duration-300">View
-            All Projects</a>
+    <div class="text-center mt-15">
+        <a routerLink="/portfolio"
+            class="px-6 py-3 bg-accent text-bg font-semibold cursor-pointer hover:opacity-80 transition-opacity duration-300">
+            View All Projects
+        </a>
     </div>
 </app-content-section>
 
+<!-- 4. Stack, grouped by capability direction -->
 <app-content-section>
-    <app-title>CONTACT ME</app-title>
-    <div class=" grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-0">
-        <div class=" flex lg:justify-center items-center gap-3">
-            <img src="/images/email.svg" alt="email-icon" class=" w-8">
-            <p class=" text-highlight-text font-anton text-xl   lg:text-2xl">jadxie2022@gmail.com</p>
+    <app-title>MY STACK</app-title>
+
+    @for (group of skillGroups; track group.title) {
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-0 mb-20">
+        <div class="font-anton text-highlight-text text-2xl lg:text-3xl lg:col-span-1 uppercase">
+            {{ group.title }}
         </div>
-        <div class=" flex lg:justify-center items-center gap-3">
-            <img src="/images/mobile.svg" alt="phone-icon" class=" w-8">
-            <p class=" text-highlight-text font-anton text-xl lg:text-2xl">+1 382 889 3727</p>
-        </div>
-        <div class=" flex lg:justify-center items-center gap-3">
-            <img src="/images/location.svg" alt="location-icon" class=" w-8">
-            <p class=" text-highlight-text font-anton text-xl lg:text-2xl">Waterloo, ON, Canada</p>
+        <div class="grid grid-cols-2 lg:grid-cols-3 gap-8 lg:col-span-2">
+            @for (stack of group.skills; track stack.label) {
+            <div class="flex items-center gap-3">
+                @if (stack.iconUrl) {
+                <img [src]="stack.iconUrl" [alt]="stack.label + ' logo'" class="w-9" />
+                } @else {
+                <span class="w-9 text-center font-mono text-accent" aria-hidden="true">&gt;_</span>
+                }
+                <p>{{ stack.label }}</p>
+            </div>
+            }
         </div>
     </div>
-    <div class=" mt-15 space-y-5">
-        <p class=" text-lg text-center">Also Find Me On</p>
-        <div class=" flex justify-center items-center gap-10">
-            <a href="https://github.com/Mou2xie" target="_blank"
-                class="hover:-translate-y-1 transition-all duration-200"><img src="/images/github.svg" alt="github-icon"
-                    class=" w-10 lg:w-12"></a>
-            <a href="https://www.linkedin.com/in/yong-jie-xie-95919632b/" target="_blank"
-                class="hover:-translate-y-1 transition-all duration-200"><img src="/images/linkedin.svg"
-                    alt="linkedin-icon" class=" w-10 lg:w-12"></a>
-            <a href="https://x.com/Jedxie3" target="_blank"
-                class="hover:-translate-y-1 transition-all duration-200"><img src="/images/x.svg" alt="x-icon"
-                    class=" w-10 lg:w-12"></a>
+    }
+
+    <p class="text-sm">
+        Also worked with Angular, Vue, Svelte, Pydantic and PostgreSQL, plus coursework exposure to
+        Terraform, AWS, Flutter, C#, MySQL and MongoDB.
+        <a routerLink="/about-me" class="text-accent underline">More on the About page</a>.
+    </p>
+</app-content-section>
+
+<!-- 5. Recognition -->
+<app-content-section>
+    <app-title>RECOGNITION</app-title>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        @for (award of awards; track award.name) {
+        <div class="border-l-2 border-accent/50 pl-4">
+            <p class="text-highlight-text font-anton text-xl">{{ award.name }}</p>
+            <p>{{ award.project }} · {{ award.scope }} · {{ award.year }}</p>
+        </div>
+        }
+    </div>
+</app-content-section>
+
+<!-- 6. Contact -->
+<app-content-section>
+    <app-title>CONTACT ME</app-title>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-0">
+        <div class="flex lg:justify-center items-center gap-3">
+            <img src="/images/email.svg" alt="" aria-hidden="true" class="w-8" />
+            <a [href]="'mailto:' + profile.email" class="text-highlight-text font-anton text-xl lg:text-2xl hover:text-accent transition-colors duration-200">{{ profile.email }}</a>
+        </div>
+        <div class="flex lg:justify-center items-center gap-3">
+            <img src="/images/mobile.svg" alt="" aria-hidden="true" class="w-8" />
+            <a [href]="'tel:' + profile.phone.replace(/[^+0-9]/g, '')" class="text-highlight-text font-anton text-xl lg:text-2xl hover:text-accent transition-colors duration-200">{{ profile.phone }}</a>
+        </div>
+        <div class="flex lg:justify-center items-center gap-3">
+            <img src="/images/location.svg" alt="" aria-hidden="true" class="w-8" />
+            <p class="text-highlight-text font-anton text-xl lg:text-2xl">{{ profile.location }}</p>
+        </div>
+    </div>
+    <div class="mt-15 space-y-5">
+        <p class="text-lg text-center">Also Find Me On</p>
+        <div class="flex justify-center items-center gap-10">
+            <a [href]="profile.links.github" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile"
+                class="hover:-translate-y-1 transition-all duration-200"><img src="/images/github.svg" alt="" aria-hidden="true"
+                    class="w-10 lg:w-12" /></a>
+            <a [href]="profile.links.linkedin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"
+                class="hover:-translate-y-1 transition-all duration-200"><img src="/images/linkedin.svg" alt="" aria-hidden="true"
+                    class="w-10 lg:w-12" /></a>
+            <a [href]="profile.links.x" target="_blank" rel="noopener noreferrer" aria-label="X profile"
+                class="hover:-translate-y-1 transition-all duration-200"><img src="/images/x.svg" alt="" aria-hidden="true"
+                    class="w-10 lg:w-12" /></a>
         </div>
     </div>
 </app-content-section>

@@ -1,9 +1,9 @@
-import { Component, computed, inject, signal } from "@angular/core";
-import { ProductListItem } from "../../shared/components/product-list-item/product-list-item.component";
-import { ContentSection } from "../../shared/components/content-section/content-section.component";
-import { PortfolioService } from "../../core/services/portfolioService.service";
-import type { Category } from "../../core/services/portfolioService.service";
-import { QuestionComponent } from "../../shared/components/question/question.component";
+import { Component, computed, inject, signal } from '@angular/core';
+import { ProductListItem } from '../../shared/components/product-list-item/product-list-item.component';
+import { ContentSection } from '../../shared/components/content-section/content-section.component';
+import { PortfolioService } from '../../core/services/portfolioService.service';
+import type { ProjectTag } from '../../core/models/portfolio.models';
+import { QuestionComponent } from '../../shared/components/question/question.component';
 
 @Component({
     selector: 'app-portfolio',
@@ -11,15 +11,20 @@ import { QuestionComponent } from "../../shared/components/question/question.com
     imports: [ProductListItem, ContentSection, QuestionComponent],
 })
 export class Portfolio {
-
     private portfolioService = inject(PortfolioService);
 
-    protected readonly categories = [...this.portfolioService.portfolioCategories];
-    protected selectedCategory = signal(this.categories[0]);
+    protected readonly tags = [...this.portfolioService.portfolioTags];
+    protected selectedTag = signal<ProjectTag>(this.tags[0]);
 
-    protected readonly projectsList = computed(() => this.portfolioService.getPortfolioProjectsByCategory(this.selectedCategory()))
+    /**
+     * Projects for the active tag. A project carrying several tags appears
+     * exactly once, because filtering runs over the single catalog list.
+     */
+    protected readonly projectsList = computed(() =>
+        this.portfolioService.getProjectsByTag(this.selectedTag()),
+    );
 
-    protected setSelectedCategory(category: Category) {
-        this.selectedCategory.set(category);
+    protected setSelectedTag(tag: ProjectTag) {
+        this.selectedTag.set(tag);
     }
 }

@@ -3,7 +3,10 @@ import type { IProjectContent } from "./IProjectContent";
 export const fortunegenerator: IProjectContent = {
     id: 301,
     projectName: 'n8n Fortune Generator',
-    description: 'Generate fortunes for users of horoscopechinois.today',
+    description: 'Automated French horoscope content pipeline writing into horoscopechinois.today',
+    role: 'Workflow Designer · Automation Developer',
+    status: 'Live',
+    teamSize: 1,
     links: [],
     image: ['/projects/fortunegenerator/1.png', '/projects/fortunegenerator/2.png'],
     content: `

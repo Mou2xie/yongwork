@@ -2,8 +2,13 @@ import type { IProjectContent } from "./IProjectContent";
 
 export const molibb: IProjectContent = {
     id: 6,
-    projectName: 'molibb.baby (ch)',
-    description: 'Cross gate account manager',
+    projectName: 'molibb.baby',
+    description: 'Local-first game account manager for tracking accounts and characters',
+    role: 'Indie Developer',
+    status: 'Live',
+    teamSize: 1,
+    scopeNote:
+        'Built independently for a friend who plays Cross Gate, using AI-assisted development. Feature development and launch were completed in one day — a candidate-reported delivery period, not a measured comparison against another method.',
     links: [
         { channel: 'github', url: 'https://github.com/Mou2xie/gameAccountManager/tree/main' },
         { channel: 'website', url: 'https://www.molibb.baby/' },

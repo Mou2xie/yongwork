@@ -1,42 +1,50 @@
-<app-content-section class=" mt-30 lg:mt-40">
-    <div class=" space-y-3">
-        <h1 class=" text-3xl lg:text-5xl font-bold font-anton text-highlight-text">
-            Engineering <span class=" text-accent">Solutions</span>, Not Just Software
+<app-content-section class="mt-30 lg:mt-40">
+    <div class="space-y-3">
+        <h1 class="text-3xl lg:text-5xl font-bold font-anton text-highlight-text">
+            Building <span class="text-accent">AI Products</span>, End to End
         </h1>
         <p class="lg:text-lg">
-            I look beyond syntax and frameworks. Every project below is a holistic answer to a specific
-            problem—combining product strategy, user-centric design, and robust engineering to deliver complete,
-            shipping solutions.
+            Applied AI and full-stack work — retrieval pipelines, browser extensions, and
+            content-driven web applications. Each one is written up as a case study covering the
+            problem, the audience and the decisions behind it, including what it does not do.
         </p>
-        <app-question question=" Introduce your 'Gold Medal' project and tell me why it's special">
-            <p>Wondering which project tops my list? Just hit me up.</p>
+        <app-question question="Which project are you most proud of, and why?">
+            <p>Wondering which project tops my list? Just ask.</p>
         </app-question>
     </div>
 </app-content-section>
 
-<app-content-section class=" grid grid-cols-1 lg:grid-cols-5 gap-5">
-
-    <aside class=" lg:col-span-1 static lg:sticky top-18 self-start select-none">
-        <div class=" space-y-5 font-anton text-xl">
-            @for(category of categories; track category){
-            <div class=" cursor-pointer hover:text-highlight-text transition-colors duration-200"
-                [class.text-white]=" category === selectedCategory()" (click)="setSelectedCategory(category)">
-                {{category}}</div>
+<app-content-section class="grid grid-cols-1 lg:grid-cols-5 gap-5">
+    <aside class="lg:col-span-1 static lg:sticky top-18 self-start select-none">
+        <nav aria-label="Filter projects by category" class="space-y-5 font-anton text-xl">
+            @for (tag of tags; track tag) {
+            <button
+                type="button"
+                class="block text-left cursor-pointer hover:text-highlight-text transition-colors duration-200 focus:outline-none focus-visible:text-accent focus-visible:underline"
+                [class.text-accent]="tag === selectedTag()"
+                [class.text-highlight-text]="tag !== selectedTag()"
+                [attr.aria-pressed]="tag === selectedTag()"
+                (click)="setSelectedTag(tag)">
+                {{ tag }}
+            </button>
             }
-            <a href="https://github.com/Mou2xie" target="_blank"
-                class=" cursor-pointer hover:text-highlight-text transition-colors duration-200 flex items-center gap-0.5">
+            <a href="https://github.com/Mou2xie" target="_blank" rel="noopener noreferrer"
+                class="cursor-pointer hover:text-highlight-text transition-colors duration-200 flex items-center gap-0.5">
                 GitHub
-                <img src="/images/share.svg" alt="go to github" class=" w-6 h-6">
+                <img src="/images/share.svg" alt="" aria-hidden="true" class="w-6 h-6" />
             </a>
-
-        </div>
+        </nav>
     </aside>
 
-    <div class=" lg:col-span-4">
-        <div class=" grid grid-cols-1 lg:grid-cols-2 gap-8">
-            @for(item of projectsList(); track item.projectName){
+    <div class="lg:col-span-4">
+        @if (projectsList().length > 0) {
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            @for (item of projectsList(); track item.id) {
             <app-product-list-item [projectInfo]="item"></app-product-list-item>
             }
         </div>
+        } @else {
+        <p class="text-lg">No projects in this category yet.</p>
+        }
     </div>
 </app-content-section>

@@ -1,58 +1,121 @@
-<app-content-section class=" space-y-5">
-    <img src="/images/aboutmehero.png" alt=" a programmer sitting by a table" class=" w-full lg:w-2/3 mx-auto mb-10">
-    <p>Hi, I'm Yong Xie, an atypical developer.</p>
+<app-content-section class="space-y-5">
+    <img src="/images/aboutmehero.png" alt="Illustration of a programmer working at a desk" class="w-full lg:w-2/3 mx-auto mb-10" />
 
-    <p>Before diving deep into the world of code, I spent over 10 years navigating the tech industry as a Product
-        Manager.</p>
+    @for (paragraph of profile.aboutIntro; track $index) {
+    <p>{{ paragraph }}</p>
+    }
 
-    <p>My career began in 2012, right at the onset of the golden age of China's mobile internet boom. As a product
-        professional deeply rooted in the industry, I worked for major enterprises like <strong>iQIYI</strong> and
-        <strong>Wanda Pictures</strong>, managing online products with over <strong>150,000 DAU</strong>. I also thrived
-        in startup environments, guiding products through the challenging "0 to 1" lifecycle.
+    <p>
+        I'm not a traditional programmer. I start from business value and user experience, and I
+        work across TypeScript, React and Python as well as applied AI — retrieval, tool calling and
+        structured generation — to build products that solve a real problem.
     </p>
-
-    <p>In those years, I mastered the art of listening to users, balancing business goals with technical resources,
-        and—most importantly—taking full ownership of results. This deep-seated product mindset and business acumen have
-        now become my most valuable assets as a developer.</p>
-
-    <p>After a decade of designing features and writing documentation, my creative drive wasn't dampened; it grew
-        stronger. I realized I craved more than just "planning" the blueprint—I wanted to <strong>build</strong> it with
-        my own hands.</p>
-
-    <p>Driven by this passion, I started teaching myself to code outside of work. From scripting simple efficiency tools
-        to independently developing browser extensions, full-stack applications, and AI workflows, I began turning my
-        product concepts into reality, line by line.</p>
-
-    <p>Now, having traveled halfway across the globe to <strong>Canada</strong>, I am embarking on a new journey.</p>
-
-    <p>I am not just a traditional programmer; I am a partner who starts with business value and user experience. I
-        leverage modern tech stacks like <strong>React</strong>, <strong>Angular</strong>, and <strong>Node.js</strong>,
-        while also commanding <strong>AI Agent development</strong> and <strong>LLM integration</strong>, to build
-        digital products that solve real problems and thrive in the market.</p>
-
     <p>If you are looking for a builder who understands both code and product, let's connect.</p>
+
     <app-question question="Tell me about your self-taught coding journey.">
         <p>Ask me how I learned to code on my own.</p>
     </app-question>
 </app-content-section>
 
 <app-content-section>
-    <app-title>MY EXPERIENCE</app-title>
+    <app-title>ENGINEERING EXPERIENCE</app-title>
     <div>
-        @for(item of experience; track item){
-        <div class=" grid grid-cols-1 lg:grid-cols-5 gap-5 lg:gap-0 my-10">
-            <div class=" lg:col-span-2">
-                <p>{{item.date}}</p>
-                <p class=" text-highlight-text font-anton text-2xl lg:text-3xl">{{item.title}}</p>
-                <p>{{item.company}}</p>
+        @for (item of engineeringExperience; track item.title + item.date) {
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-5 lg:gap-0 my-10">
+            <div class="lg:col-span-2">
+                <p>{{ item.date }}</p>
+                <p class="text-highlight-text font-anton text-2xl lg:text-3xl">{{ item.title }}</p>
+                <p>{{ item.company }}</p>
+                @if (item.context) {
+                <p class="text-sm">{{ item.context }}</p>
+                }
             </div>
-            <p class=" lg:col-span-3">
-                {{item.description}}
-            </p>
+            <p class="lg:col-span-3">{{ item.description }}</p>
         </div>
         }
     </div>
-    <app-question question="Tell me more about what you did as a product manager?">
+</app-content-section>
+
+<app-content-section>
+    <app-title>PRODUCT EXPERIENCE</app-title>
+    <div>
+        @for (item of productExperience; track item.title + item.date) {
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-5 lg:gap-0 my-10">
+            <div class="lg:col-span-2">
+                <p>{{ item.date }}</p>
+                <p class="text-highlight-text font-anton text-2xl lg:text-3xl">{{ item.title }}</p>
+                <p>{{ item.company }}</p>
+            </div>
+            <p class="lg:col-span-3">{{ item.description }}</p>
+        </div>
+        }
+    </div>
+    <app-question question="Tell me more about what you did as a product manager.">
         <p>Want to know more details about my product journey?</p>
     </app-question>
+</app-content-section>
+
+<app-content-section>
+    <app-title>EDUCATION</app-title>
+    <div>
+        @for (item of education; track item.credential) {
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-5 lg:gap-0 my-10">
+            <div class="lg:col-span-2">
+                <p>{{ item.date }}</p>
+                <p class="text-highlight-text font-anton text-2xl lg:text-3xl">{{ item.institution }}</p>
+            </div>
+            <div class="lg:col-span-3">
+                <p class="text-highlight-text">{{ item.credential }}</p>
+                @if (item.detail) {
+                <p>{{ item.detail }}</p>
+                }
+            </div>
+        </div>
+        }
+    </div>
+</app-content-section>
+
+<app-content-section>
+    <app-title>RECOGNITION</app-title>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        @for (award of awards; track award.name) {
+        <div class="border-l-2 border-accent/50 pl-4">
+            <p class="text-highlight-text font-anton text-xl">{{ award.name }}</p>
+            <p>{{ award.project }}</p>
+            <p class="text-sm">{{ award.scope }} · {{ award.year }}</p>
+        </div>
+        }
+    </div>
+</app-content-section>
+
+<app-content-section>
+    <app-title>ALSO WORKED WITH</app-title>
+    @for (block of additionalSkills; track block.tier) {
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-5 lg:gap-0 my-10">
+        <div class="lg:col-span-2">
+            <p class="text-highlight-text font-anton text-2xl lg:text-3xl">{{ block.label }}</p>
+            <p class="text-sm">{{ block.description }}</p>
+        </div>
+        <ul class="lg:col-span-3 flex flex-wrap gap-x-4 gap-y-2">
+            @for (skill of block.skills; track skill) {
+            <li class="px-3 py-1 rounded-full border border-normal-text/40 text-sm">{{ skill }}</li>
+            }
+        </ul>
+    </div>
+    }
+
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-5 lg:gap-0 my-10">
+        <div class="lg:col-span-2">
+            <p class="text-highlight-text font-anton text-2xl lg:text-3xl">AVAILABILITY</p>
+        </div>
+        <div class="lg:col-span-3">
+            <p>{{ profile.location }} · {{ profile.availability }}</p>
+            <p>{{ profile.workAuth }}</p>
+            <p>Languages: {{ profile.languages }}</p>
+            <p class="mt-2">
+                <a [href]="'mailto:' + profile.email" class="text-accent underline">{{ profile.email }}</a>
+                · <a routerLink="/contact" class="text-accent underline">Contact page</a>
+            </p>
+        </div>
+    </div>
 </app-content-section>

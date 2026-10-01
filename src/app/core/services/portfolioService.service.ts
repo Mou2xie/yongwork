@@ -1,216 +1,91 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
+import { PROJECT_CATALOG, PROJECT_TAGS } from '../data/projectCatalog.data';
+import type { ProjectSummary, ProjectTag, ProjectStatus } from '../models/portfolio.models';
 
-export type Category = 'Web APP' | 'Mobile APP' | 'AI' | 'Design' | 'PRD';
-
-export type Platform = 'Web' | 'Mobile' | 'Desktop' | 'Extension' | undefined;
-
-export interface Project {
-    id: number;
-    projectName: string;
-    category: Category;
-    description: string;
-    cover: string;
-    platform: Platform[];
-    featured: boolean;
-    url?: string;
-}
+/**
+ * Backward-compatible aliases.
+ *
+ * `Project` was the original public name of the list-item shape and is still
+ * imported by `product-list-item`. It is now an alias of `ProjectSummary`
+ * rather than a second, competing definition.
+ */
+export type { Category, Platform } from '../models/portfolio.models';
+export type Project = ProjectSummary;
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
 })
 export class PortfolioService {
-
-    private readonly _portfolioCategories: Category[] = ['Web APP', 'AI', 'Design'];
-
-    private readonly _portfolioProjects: Project[] = [
-
-        // Web APP start from 1
-        {
-            id: 1,
-            projectName: 'LingoPick',
-            category: 'Web APP',
-            description: 'AI-powered word translator & vocabulary builder',
-            cover: '/projects/lingopick/cover.png',
-            platform: ['Web', 'Extension'],
-            featured: true,
-        },
-        {
-            id: 2,
-            projectName: 'speakingpass.com',
-            category: 'Web APP',
-            description: 'IELTS speaking test topic bank',
-            cover: '/projects/speakingpass/cover.png',
-            platform: ['Web'],
-            featured: true,
-        },
-        {
-            id: 3,
-            projectName: 'Transider',
-            category: 'Web APP',
-            description: 'Free En-Ch in-page translator',
-            cover: '/projects/transider/cover.png',
-            platform: ['Extension'],
-            featured: false,
-        },
-        {
-            id: 4,
-            projectName: 'horoscopechinois.today (fr)',
-            category: 'Web APP',
-            description: 'Online Chinese traditional astrology',
-            cover: '/projects/horoscopechinois/cover.png',
-            platform: ['Web'],
-            featured: false,
-        },
-        {
-            id: 5,
-            projectName: 'grokani.love',
-            category: 'Web APP',
-            description: 'Guide book for building affection with Ani',
-            cover: '/projects/grokani/cover.png',
-            platform: ['Web'],
-            featured: false,
-        },
-        {
-            id: 6,
-            projectName: 'molibb.baby (ch)',
-            category: 'Web APP',
-            description: 'Cross gate account manager',
-            cover: '/projects/molibb/cover.png',
-            platform: ['Web'],
-            featured: false,
-        },
-        {
-            id: 7,
-            projectName: 'YongWork',
-            category: 'Web APP',
-            description: 'Personal website',
-            cover: '/projects/yongwork/cover.png',
-            platform: ['Web'],
-            featured: false,
-        },
-        {
-            id: 8,
-            projectName: 'Hu-Landscaping',
-            category: 'Web APP',
-            description: 'Landscaping company landing page',
-            cover: '/projects/hu-landscaping/cover.png',
-            platform: ['Web'],
-            featured: false,
-        },
-
-        // AI Workflow start from 300
-        {
-            id: 300,
-            projectName: 'n8n Tender Document Generator',
-            category: 'AI',
-            description: 'AI workflow to generate tender document',
-            cover: '/projects/tendermaker/cover.png',
-            platform: [],
-            featured: false,
-        },
-        {
-            id: 301,
-            projectName: 'n8n Fortune Generator',
-            category: 'AI',
-            description: 'Generate poetry fortunes for horoscopechinois.today',
-            cover: '/projects/fortunegenerator/cover.png',
-            platform: [],
-            featured: false,
-        },
-        {
-            id: 302,
-            projectName: 'n8n Google Trends Keywords Tool',
-            category: 'AI',
-            description: 'Find product idea from Google Trends keywords',
-            cover: '/projects/keywordexplainer/cover.png',
-            platform: [],
-            featured: false,
-        },
-        {
-            id: 303,
-            projectName: 'Agent Yong',
-            category: 'AI',
-            description: 'My online digital twin',
-            cover: '/projects/agentyong/cover.png',
-            platform: ['Web'],
-            featured: true,
-        },
-
-
-        // Design works start from 500
-        {
-            id: 500,
-            projectName: 'Top Hunter',
-            category: 'Design',
-            description: 'Monster Hunter game recorder APP',
-            cover: '/design/tophunter.png',
-            platform: ['Mobile'],
-            featured: false,
-            url: 'https://www.figma.com/design/ysrhPHImoduDziVILfeVap/MonsterHunterRecorder?t=tnWxb1oP8CesnEiL-1',
-        },
-        {
-            id: 501,
-            projectName: 'SMS Forwarder',
-            category: 'Design',
-            description: 'An Android APP for forwarding messages',
-            cover: '/design/smsforwarder.png',
-            platform: ['Mobile'],
-            featured: false,
-            url: 'https://www.figma.com/design/5Uo3kVScGig5Ry8m13hPud/sms-forwarder?t=tnWxb1oP8CesnEiL-1',
-        },
-        {
-            id: 502,
-            projectName: 'LingoPick',
-            category: 'Design',
-            description: 'All platforms design for vocabulary builder',
-            cover: '/design/lingopick.png',
-            platform: ['Web', 'Extension', 'Mobile'],
-            featured: false,
-            url: 'https://www.figma.com/design/MVUYNNXyCxGtkKeYwp8iD9/LingoPick?t=tnWxb1oP8CesnEiL-1',
-        },
-        {
-            id: 503,
-            projectName: 'Personal Website',
-            category: 'Design',
-            description: 'Personal website design',
-            cover: '/design/yong.png',
-            platform: ['Web'],
-            featured: false,
-            url: 'https://www.figma.com/design/HKqAEOWLkDBUUjbmydAaoP/personal-website?t=tnWxb1oP8CesnEiL-1',
-        },
-        {
-            id: 504,
-            projectName: 'Transider',
-            category: 'Design',
-            description: 'Chrome extension design',
-            cover: '/design/transider.png',
-            platform: ['Extension'],
-            featured: false,
-            url: 'https://www.figma.com/design/L22X0kY1g8xSfvKqbnzjdF/Transider?t=tnWxb1oP8CesnEiL-1',
-        },
-        {
-            id: 505,
-            projectName: 'SpeakingPass',
-            category: 'Design',
-            description: 'English speaking test topic bank website design',
-            cover: '/design/speakingpass.png',
-            platform: ['Web'],
-            featured: false,
-            url: 'https://www.figma.com/design/sev2kFiBxPmh67C1YcZPlU/SpeakingPass_v3?t=tnWxb1oP8CesnEiL-1',
-        },
-    ];
-
-    public get portfolioCategories() {
-        return this._portfolioCategories;
+    /** Sidebar filter tags. `All` is first so it is the default selection. */
+    public get portfolioTags(): ProjectTag[] {
+        return PROJECT_TAGS;
     }
 
-    public getFeaturedProjects() {
-        const featuredProjects = this._portfolioProjects.filter(item => item.featured);
-        return featuredProjects.length > 3 ? featuredProjects.slice(0, 3) : featuredProjects;
+    /**
+     * Backward-compatible accessor for the original category sidebar.
+     * Derived from the catalog so it cannot go stale.
+     */
+    public get portfolioCategories(): ProjectSummary['category'][] {
+        const seen: ProjectSummary['category'][] = [];
+        for (const project of this.publicProjects()) {
+            if (!seen.includes(project.category)) {
+                seen.push(project.category);
+            }
+        }
+        return seen;
     }
 
-    public getPortfolioProjectsByCategory(category: Category) {
-        return this._portfolioProjects.filter(item => item.category === category);
+    /**
+     * Every catalog entry marked publicly visible. Records hidden by rule
+     * (e.g. grokani.love) never leave this service.
+     */
+    public getAllProjects(): ProjectSummary[] {
+        return this.publicProjects();
     }
 
+    /**
+     * Featured projects for the home page, in explicit `featuredOrder`.
+     * Deliberately does not depend on catalog array position, which is what
+     * previously let an unrelated project occupy a featured slot.
+     */
+    public getFeaturedProjects(): ProjectSummary[] {
+        return this.publicProjects()
+            .filter((project) => project.featured)
+            .sort((a, b) => (a.featuredOrder ?? 99) - (b.featuredOrder ?? 99))
+            .slice(0, 3);
+    }
+
+    /**
+     * Projects matching a sidebar tag. `All` returns every visible project.
+     * Each project appears once regardless of how many tags it carries.
+     */
+    public getProjectsByTag(tag: ProjectTag): ProjectSummary[] {
+        const projects = this.publicProjects();
+        if (tag === 'All') {
+            return projects;
+        }
+        return projects.filter((project) => project.tags.includes(tag));
+    }
+
+    /**
+     * Backward-compatible category query retained for the transition period.
+     * Prefer `getProjectsByTag` in new code.
+     */
+    public getPortfolioProjectsByCategory(
+        category: ProjectSummary['category'],
+    ): ProjectSummary[] {
+        return this.publicProjects().filter((project) => project.category === category);
+    }
+
+    /** Single catalog lookup. Returns `undefined` for unknown or hidden ids. */
+    public getProjectSummary(id: number): ProjectSummary | undefined {
+        return this.publicProjects().find((project) => project.id === id);
+    }
+
+    private publicProjects(): ProjectSummary[] {
+        return PROJECT_CATALOG.filter((project) => project.visibility);
+    }
 }
+
+/** Re-exported for callers that render status labels. */
+export type { ProjectStatus };
