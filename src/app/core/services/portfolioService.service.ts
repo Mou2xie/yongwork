@@ -56,15 +56,10 @@ export class PortfolioService {
     }
 
     /**
-     * Projects matching a sidebar tag. `All` returns every visible project.
-     * Each project appears once regardless of how many tags it carries.
+     * Projects matching a sidebar tag. Each project appears once.
      */
     public getProjectsByTag(tag: ProjectTag): ProjectSummary[] {
-        const projects = this.publicProjects();
-        if (tag === 'All') {
-            return projects;
-        }
-        return projects.filter((project) => project.tags.includes(tag));
+        return this.publicProjects().filter((project) => project.tags.includes(tag));
     }
 
     /**

@@ -36,8 +36,8 @@ describe('PortfolioService', () => {
         }
     });
 
-    it('returns every visible project exactly once for the All tag', () => {
-        const all = service.getProjectsByTag('All');
+    it('returns every visible project exactly once for the Products tag', () => {
+        const all = service.getProjectsByTag('Products');
         const ids = all.map((p) => p.id);
         expect(new Set(ids).size).toBe(ids.length);
     });

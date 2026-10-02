@@ -28,7 +28,10 @@ export interface EducationEntry {
 }
 
 export interface AwardEntry {
-    name: string;
+    /** Short award title, e.g. "1st Place". */
+    title: string;
+    /** Showcase or event the award was presented at. */
+    event: string;
     project: string;
     /** Team scope is stated explicitly so individual credit is not overstated. */
     scope: string;
@@ -50,15 +53,21 @@ export const PROFILE = {
     languages: 'English (Professional Working) · Mandarin (Native)',
 
     intro:
-        "I'm Yongjie Xie, a developer based in Waterloo, Canada. I build AI-powered applications and web products with TypeScript, React and Python, bringing 10+ years of product-management experience to the problems I choose and the experiences I design.",
+        "I'm Yongjie Xie, a developer based in Waterloo, Canada. I build AI-powered applications and full-stack products with TypeScript, React and Python, bringing 10+ years of product-management experience to build applications that align business goals with technical execution.",
 
     summary:
-        'I independently own the full lifecycle — from concept to deployment — bridging the gap between engineering and business to balance user experience with strategic goals.',
+        'With 10+ years in Product Management, I bring a unique dual perspective to Full-stack Development. Beyond coding, I specialize in strategy, architecture, and design. I independently own the full lifecycle—from concept to deployment—bridging the gap between engineering and business to balance UX with strategic goals.',
 
     aboutIntro: [
-        "I'm Yongjie Xie, a Waterloo-based developer focused on applied AI and full-stack web development. My work includes conversational agents, retrieval workflows, browser extensions, and content-driven web applications.",
-        "Before moving into development, I spent more than a decade in product management, including roles at iQIYI, Wanda Pictures and Polang Movies. That background shapes how I work: understand the user's problem, make deliberate product decisions, and carry the work through to delivery.",
-        "I began learning HTML, CSS, JavaScript, Node.js and databases alongside my product work, then completed Conestoga College's Mobile and Web Development diploma in 2026 with High Distinction and a GPA of 3.79/4.0. Alongside my coursework I studied Python and AI agent development and applied that learning to independent products, client work and team capstones.",
+        "Hi, I'm Yongjie Xie, an atypical developer based in Waterloo, Canada.",
+        'Before diving deep into the world of code, I spent more than a decade in product management.',
+        "My career began in 2012, during China's mobile internet boom. I worked at companies including iQIYI, Wanda Pictures and Polang Movies, across established businesses and startup environments. At Wanda Pictures, I helped grow the WeChat Mini Program into the company's second-largest online ticketing channel, reaching 150,000+ daily active users.",
+        "In those years, I learned to listen to users, balance business goals with technical resources, and take ownership of delivery. That product mindset shapes how I work today: understand the user's problem, make deliberate product decisions, and carry the work through to delivery.",
+        'After a decade of designing features and writing documentation, my creative drive grew stronger. I wanted to do more than plan the blueprint — I wanted to build it with my own hands.',
+        'I started teaching myself HTML, CSS, JavaScript, Node.js and databases alongside my product work. As I learned, I began turning product concepts into working applications, from browser extensions and content-driven web applications to conversational agents and retrieval workflows.',
+        "After moving to Canada, I completed Conestoga College's Mobile and Web Development diploma in 2026 with High Distinction and a GPA of 3.79/4.0. Alongside my coursework, I studied Python and AI agent development, applying that learning to independent products, client work and team capstones.",
+        'I bring a product perspective to development, starting with business value and user experience. I work across TypeScript, React, Angular, Node.js and Python, combining full-stack development with applied AI — retrieval, tool calling, structured generation and LLM integration — to build products that solve real problems.',
+        "If you are looking for a builder who understands both code and product, let's connect.",
     ],
 
     links: {
@@ -130,15 +139,17 @@ export const EDUCATION: EducationEntry[] = [
 
 export const AWARDS: AwardEntry[] = [
     {
-        name: '1st Place — Mobile and Web Development Winter 2026 ACSIT Capstone Showcase',
+        title: '1st Place',
+        event: 'Mobile & Web Development · ACSIT Capstone Showcase',
         project: 'NovaAgent',
-        scope: 'Team award · 5-person capstone',
+        scope: 'Team award',
         year: '2026',
     },
     {
-        name: 'Best Final Year Project — Conestoga College 2026 Tech Showcase',
+        title: 'Best Final Year Project',
+        event: 'Conestoga Tech Showcase 2026',
         project: 'Fix My City',
-        scope: 'Team award · 5-person capstone',
+        scope: 'Team award',
         year: '2026',
     },
 ];

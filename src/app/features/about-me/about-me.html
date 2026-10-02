@@ -5,22 +5,15 @@
     <p>{{ paragraph }}</p>
     }
 
-    <p>
-        I'm not a traditional programmer. I start from business value and user experience, and I
-        work across TypeScript, React and Python as well as applied AI — retrieval, tool calling and
-        structured generation — to build products that solve a real problem.
-    </p>
-    <p>If you are looking for a builder who understands both code and product, let's connect.</p>
-
     <app-question question="Tell me about your self-taught coding journey.">
         <p>Ask me how I learned to code on my own.</p>
     </app-question>
 </app-content-section>
 
 <app-content-section>
-    <app-title>ENGINEERING EXPERIENCE</app-title>
+    <app-title>WORKING EXPERIENCE</app-title>
     <div>
-        @for (item of engineeringExperience; track item.title + item.date) {
+        @for (item of workExperience; track item.title + item.date) {
         <div class="grid grid-cols-1 lg:grid-cols-5 gap-5 lg:gap-0 my-10">
             <div class="lg:col-span-2">
                 <p>{{ item.date }}</p>
@@ -34,22 +27,6 @@
         </div>
         }
     </div>
-</app-content-section>
-
-<app-content-section>
-    <app-title>PRODUCT EXPERIENCE</app-title>
-    <div>
-        @for (item of productExperience; track item.title + item.date) {
-        <div class="grid grid-cols-1 lg:grid-cols-5 gap-5 lg:gap-0 my-10">
-            <div class="lg:col-span-2">
-                <p>{{ item.date }}</p>
-                <p class="text-highlight-text font-anton text-2xl lg:text-3xl">{{ item.title }}</p>
-                <p>{{ item.company }}</p>
-            </div>
-            <p class="lg:col-span-3">{{ item.description }}</p>
-        </div>
-        }
-    </div>
     <app-question question="Tell me more about what you did as a product manager.">
         <p>Want to know more details about my product journey?</p>
     </app-question>
@@ -57,19 +34,15 @@
 
 <app-content-section>
     <app-title>EDUCATION</app-title>
-    <div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
         @for (item of education; track item.credential) {
-        <div class="grid grid-cols-1 lg:grid-cols-5 gap-5 lg:gap-0 my-10">
-            <div class="lg:col-span-2">
-                <p>{{ item.date }}</p>
-                <p class="text-highlight-text font-anton text-2xl lg:text-3xl">{{ item.institution }}</p>
-            </div>
-            <div class="lg:col-span-3">
-                <p class="text-highlight-text">{{ item.credential }}</p>
-                @if (item.detail) {
-                <p>{{ item.detail }}</p>
-                }
-            </div>
+        <div class="border-l-2 border-accent/50 pl-4">
+            <p class="text-sm">{{ item.date }}</p>
+            <p class="text-highlight-text font-anton text-2xl lg:text-3xl">{{ item.institution }}</p>
+            <p class="mt-2 text-highlight-text">{{ item.credential }}</p>
+            @if (item.detail) {
+            <p>{{ item.detail }}</p>
+            }
         </div>
         }
     </div>
@@ -78,43 +51,32 @@
 <app-content-section>
     <app-title>RECOGNITION</app-title>
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        @for (award of awards; track award.name) {
-        <div class="border-l-2 border-accent/50 pl-4">
-            <p class="text-highlight-text font-anton text-xl">{{ award.name }}</p>
-            <p>{{ award.project }}</p>
-            <p class="text-sm">{{ award.scope }} · {{ award.year }}</p>
+        @for (award of awards; track award.title) {
+        <div class="flex items-center justify-center gap-4">
+            <img src="/images/laurel-left.svg" alt="" aria-hidden="true" class="h-14 lg:h-20 w-auto shrink-0" />
+            <div class="min-w-0 text-center">
+                <p class="text-highlight-text font-anton text-2xl lg:text-3xl">{{ award.title }}</p>
+                <p class="mt-2 text-highlight-text">{{ award.event }}</p>
+                <p>{{ award.project }}</p>
+                <p class="text-sm">{{ award.year }}</p>
+            </div>
+            <img src="/images/laurel-right.svg" alt="" aria-hidden="true" class="h-14 lg:h-20 w-auto shrink-0" />
         </div>
         }
     </div>
 </app-content-section>
 
 <app-content-section>
-    <app-title>ALSO WORKED WITH</app-title>
-    @for (block of additionalSkills; track block.tier) {
-    <div class="grid grid-cols-1 lg:grid-cols-5 gap-5 lg:gap-0 my-10">
-        <div class="lg:col-span-2">
-            <p class="text-highlight-text font-anton text-2xl lg:text-3xl">{{ block.label }}</p>
-            <p class="text-sm">{{ block.description }}</p>
-        </div>
-        <ul class="lg:col-span-3 flex flex-wrap gap-x-4 gap-y-2">
-            @for (skill of block.skills; track skill) {
-            <li class="px-3 py-1 rounded-full border border-normal-text/40 text-sm">{{ skill }}</li>
-            }
-        </ul>
-    </div>
-    }
-
     <div class="grid grid-cols-1 lg:grid-cols-5 gap-5 lg:gap-0 my-10">
         <div class="lg:col-span-2">
             <p class="text-highlight-text font-anton text-2xl lg:text-3xl">AVAILABILITY</p>
         </div>
         <div class="lg:col-span-3">
-            <p>{{ profile.location }} · {{ profile.availability }}</p>
+            <p>{{ profile.availability }}</p>
             <p>{{ profile.workAuth }}</p>
             <p>Languages: {{ profile.languages }}</p>
             <p class="mt-2">
-                <a [href]="'mailto:' + profile.email" class="text-accent underline">{{ profile.email }}</a>
-                · <a routerLink="/contact" class="text-accent underline">Contact page</a>
+                <a routerLink="/contact" class="text-accent underline">Contact page</a>
             </p>
         </div>
     </div>

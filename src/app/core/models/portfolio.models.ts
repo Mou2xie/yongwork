@@ -11,16 +11,10 @@
 
 export type Category = 'Web APP' | 'Mobile APP' | 'AI' | 'Design' | 'PRD';
 
-export type Platform = 'Web' | 'Mobile' | 'Desktop' | 'Extension' | 'CLI' | undefined;
+export type Platform = 'Web' | 'Mobile' | 'Desktop' | 'Extension' | 'CLI' | 'Workflow' | undefined;
 
-/** Filter tags used by the portfolio sidebar. `All` is the default view. */
-export type ProjectTag =
-    | 'All'
-    | 'AI Applications'
-    | 'Web Products'
-    | 'Browser Extensions'
-    | 'Client Delivery'
-    | 'Design';
+/** Filter tags used by the portfolio sidebar. `Products` is the default view. */
+export type ProjectTag = 'Products' | 'Design';
 
 /**
  * Engagement scope. Kept separate from `status`: `kind` describes what the

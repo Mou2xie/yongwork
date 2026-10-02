@@ -2,22 +2,16 @@
 <app-content-section class="flex flex-col-reverse lg:flex-row lg:items-center gap-5 lg:gap-0">
     <div class="space-y-3 lg:grow lg:mt-20">
         <h1 class="text-3xl lg:text-5xl font-bold font-anton text-highlight-text">
-            Applied AI &amp;
-            <span class="text-accent">Full-Stack</span>
-            Developer
+            More Than a
+            <span class="text-accent">Developer</span>
         </h1>
         <p class="lg:text-lg">{{ profile.intro }}</p>
         <div class="flex flex-wrap items-center gap-3 pt-2">
-            <a routerLink="/portfolio"
-                class="px-6 py-3 bg-accent text-bg font-semibold cursor-pointer hover:opacity-80 transition-opacity duration-300">
-                View Projects
-            </a>
             <a routerLink="/contact"
-                class="px-6 py-3 border border-accent text-accent font-semibold cursor-pointer hover:bg-accent/10 transition-colors duration-300">
+                class="px-6 py-3 rounded border border-accent text-accent font-semibold cursor-pointer hover:bg-accent/10 transition-colors duration-300">
                 Contact Me
             </a>
         </div>
-        <p class="text-sm pt-1">{{ profile.availability }} · {{ profile.workAuth }}</p>
     </div>
     <img src="/images/hero-img.png" alt="Illustration of Yongjie Xie" class="w-50 lg:w-64 self-center lg:self-start lg:grow-0" />
 </app-content-section>
@@ -29,10 +23,7 @@
         <p class="text-2xl lg:text-3xl opacity-30 font-sans">{{ profile.nameLocal }}</p>
     </div>
     <div class="lg:col-span-2">
-        <p>
-            {{ profile.summary }} I bring 10+ years of product-management experience to the
-            problems I choose and the experiences I design, and I ship the result myself.
-        </p>
+        <p>{{ profile.summary }}</p>
         <app-question question="Tell me the story of how you transitioned from Product Management to Development.">
             <p>Ask me about my 'PM to Dev' story</p>
         </app-question>
@@ -49,7 +40,7 @@
     </div>
     <div class="text-center mt-15">
         <a routerLink="/portfolio"
-            class="px-6 py-3 bg-accent text-bg font-semibold cursor-pointer hover:opacity-80 transition-opacity duration-300">
+            class="px-6 py-3 rounded bg-accent text-bg font-semibold cursor-pointer hover:opacity-80 transition-opacity duration-300">
             View All Projects
         </a>
     </div>
@@ -78,22 +69,21 @@
         </div>
     </div>
     }
-
-    <p class="text-sm">
-        Also worked with Angular, Vue, Svelte, Pydantic and PostgreSQL, plus coursework exposure to
-        Terraform, AWS, Flutter, C#, MySQL and MongoDB.
-        <a routerLink="/about-me" class="text-accent underline">More on the About page</a>.
-    </p>
 </app-content-section>
 
 <!-- 5. Recognition -->
 <app-content-section>
     <app-title>RECOGNITION</app-title>
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        @for (award of awards; track award.name) {
-        <div class="border-l-2 border-accent/50 pl-4">
-            <p class="text-highlight-text font-anton text-xl">{{ award.name }}</p>
-            <p>{{ award.project }} · {{ award.scope }} · {{ award.year }}</p>
+        @for (award of awards; track award.title) {
+        <div class="flex items-center justify-center gap-4">
+            <img src="/images/laurel-left.svg" alt="" aria-hidden="true" class="h-14 lg:h-20 w-auto shrink-0" />
+            <div class="min-w-0 text-center">
+                <p class="text-highlight-text font-anton text-2xl lg:text-3xl">{{ award.title }}</p>
+                <p class="mt-2 text-highlight-text">{{ award.event }}</p>
+                <p>{{ award.project }} · {{ award.year }}</p>
+            </div>
+            <img src="/images/laurel-right.svg" alt="" aria-hidden="true" class="h-14 lg:h-20 w-auto shrink-0" />
         </div>
         }
     </div>

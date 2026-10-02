@@ -27,9 +27,6 @@ export class ProductListItem {
         return `${project.projectName} — ${project.description}. Opens ${destination}.`;
     });
 
-    /** Optional scope/status chip, e.g. "Team Capstone · 5 people". */
+    /** Optional scope/status chip, e.g. "Team Capstone". */
     protected readonly scopeLabel = computed(() => this.projectInfo().scopeLabel ?? null);
-
-    /** Optional evidence line, e.g. a metric or award. */
-    protected readonly highlight = computed(() => this.projectInfo().highlight ?? null);
 }

@@ -19,7 +19,9 @@ export type SkillGroup =
     | 'Frontend'
     | 'Applied AI'
     | 'Backend & Data'
+    | 'Database'
     | 'Deployment'
+    | 'Tools'
     | 'Product & Collaboration'
     | 'Also worked with';
 
@@ -39,29 +41,29 @@ export const SKILLS: Skill[] = [
     { label: 'React', group: 'Frontend', tier: 'core', iconUrl: '/icons/react.svg' },
     { label: 'Next.js', group: 'Frontend', tier: 'core', iconUrl: '/icons/nextjs.svg' },
     { label: 'Tailwind CSS', group: 'Frontend', tier: 'core', iconUrl: '/icons/tailwindcss.svg' },
-    { label: 'React Router', group: 'Frontend', tier: 'core' },
-    { label: 'TanStack Query', group: 'Frontend', tier: 'core' },
+    { label: 'React Router', group: 'Frontend', tier: 'core', iconUrl: '/icons/reactrouter.svg' },
+    { label: 'TanStack', group: 'Frontend', tier: 'core', iconUrl: '/icons/tanstack.svg' },
 
     { label: 'LangChain', group: 'Applied AI', tier: 'core', iconUrl: '/icons/langchain.png' },
     { label: 'LangGraph', group: 'Applied AI', tier: 'core', iconUrl: '/icons/langchain.png' },
-    { label: 'Vercel AI SDK', group: 'Applied AI', tier: 'core' },
+    { label: 'Vercel AI SDK', group: 'Applied AI', tier: 'core', iconUrl: '/icons/vercel.svg' },
 
     { label: 'Node.js', group: 'Backend & Data', tier: 'core', iconUrl: '/icons/nodejs.svg' },
     { label: 'Supabase', group: 'Backend & Data', tier: 'core', iconUrl: '/icons/supabase.svg' },
 
     // ── Documented project practice ─────────────────────────────────────────
-    { label: 'FastAPI', group: 'Backend & Data', tier: 'practice' },
-    { label: 'Hono', group: 'Backend & Data', tier: 'practice' },
+    { label: 'FastAPI', group: 'Backend & Data', tier: 'practice', iconUrl: '/icons/fastapi.svg' },
+    { label: 'Hono', group: 'Backend & Data', tier: 'practice', iconUrl: '/icons/hono.svg' },
     { label: 'Express', group: 'Backend & Data', tier: 'practice', iconUrl: '/icons/express.svg' },
-    { label: 'Zod', group: 'Applied AI', tier: 'practice' },
-    { label: 'OpenRouter', group: 'Applied AI', tier: 'practice' },
-    { label: 'Vector RAG', group: 'Applied AI', tier: 'practice' },
-    { label: 'Tool Calling', group: 'Applied AI', tier: 'practice' },
-    { label: 'Structured Generation', group: 'Applied AI', tier: 'practice' },
-    { label: 'WXT', group: 'Frontend', tier: 'practice' },
-    { label: 'Zustand', group: 'Frontend', tier: 'practice' },
-    { label: 'DaisyUI', group: 'Frontend', tier: 'practice' },
-    { label: 'IndexedDB', group: 'Backend & Data', tier: 'practice' },
+    { label: 'OpenRouter', group: 'Applied AI', tier: 'practice', iconUrl: '/icons/openrouter.svg' },
+    { label: 'Vector RAG', group: 'Applied AI', tier: 'practice', iconUrl: '/icons/vector-rag.svg' },
+    { label: 'Vue', group: 'Frontend', tier: 'practice', iconUrl: '/icons/vue.svg' },
+
+    // ── Databases ───────────────────────────────────────────────────────────
+    { label: 'PostgreSQL', group: 'Database', tier: 'practice', iconUrl: '/icons/postgresql.svg' },
+    { label: 'MySQL', group: 'Database', tier: 'practice', iconUrl: '/icons/mysql.svg' },
+    { label: 'MongoDB', group: 'Database', tier: 'practice', iconUrl: '/icons/mongo.svg' },
+    { label: 'IndexedDB', group: 'Database', tier: 'practice', iconUrl: '/icons/indexeddb.svg' },
     { label: 'Vercel', group: 'Deployment', tier: 'practice', iconUrl: '/icons/vercel.svg' },
     { label: 'Cloudflare Workers', group: 'Deployment', tier: 'practice' },
     { label: 'Railway', group: 'Deployment', tier: 'practice' },
@@ -71,25 +73,21 @@ export const SKILLS: Skill[] = [
 
     // ── Working familiarity (unchanged candidate tier) ──────────────────────
     { label: 'Angular', group: 'Also worked with', tier: 'familiarity', iconUrl: '/icons/angular.svg' },
-    { label: 'Vue', group: 'Also worked with', tier: 'familiarity', iconUrl: '/icons/vue.svg' },
     { label: 'Svelte', group: 'Also worked with', tier: 'familiarity', iconUrl: '/icons/svelte.svg' },
     { label: 'Sass', group: 'Also worked with', tier: 'familiarity', iconUrl: '/icons/sass.svg' },
     { label: 'Pydantic v2', group: 'Also worked with', tier: 'familiarity' },
     { label: 'React Native', group: 'Also worked with', tier: 'familiarity', iconUrl: '/icons/expo.svg' },
-    { label: 'PostgreSQL', group: 'Also worked with', tier: 'familiarity', iconUrl: '/icons/mysql.svg' },
 
     // ── Coursework exposure ─────────────────────────────────────────────────
     { label: 'Terraform', group: 'Also worked with', tier: 'coursework' },
     { label: 'AWS EC2 / Lambda / S3', group: 'Also worked with', tier: 'coursework' },
     { label: 'Flutter', group: 'Also worked with', tier: 'coursework' },
     { label: 'C#', group: 'Also worked with', tier: 'coursework' },
-    { label: 'MySQL', group: 'Also worked with', tier: 'coursework', iconUrl: '/icons/mysql.svg' },
-    { label: 'MongoDB', group: 'Also worked with', tier: 'coursework', iconUrl: '/icons/mongo.svg' },
 
     // ── Product & collaboration tooling ─────────────────────────────────────
-    { label: 'Figma', group: 'Product & Collaboration', tier: 'core', iconUrl: '/icons/figma.svg' },
-    { label: 'Git', group: 'Product & Collaboration', tier: 'core', iconUrl: '/icons/git.svg' },
-    { label: 'Notion', group: 'Product & Collaboration', tier: 'core', iconUrl: '/icons/notion.svg' },
+    { label: 'Figma', group: 'Tools', tier: 'core', iconUrl: '/icons/figma.svg' },
+    { label: 'Git', group: 'Tools', tier: 'core', iconUrl: '/icons/git.svg' },
+    { label: 'Notion', group: 'Tools', tier: 'core', iconUrl: '/icons/notion.svg' },
 ];
 
 /**
@@ -102,7 +100,8 @@ export const HOME_SKILL_GROUPS: SkillGroup[] = [
     'Frontend',
     'Applied AI',
     'Backend & Data',
-    'Deployment',
+    'Database',
+    'Tools',
 ];
 
 export const ABOUT_SKILL_TIERS: SkillTier[] = ['familiarity', 'coursework'];
