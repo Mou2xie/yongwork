@@ -87,6 +87,8 @@ export interface IProjectContent {
     description: string;
     links: ProjectLink[];
     image: string[];
+    /** Optional captions keyed by gallery path, including historical/version context. */
+    imageCaptions?: Record<string, string>;
     /** Trusted, locally authored HTML. Rendered through Angular's innerHTML binding. */
     content: string;
     role?: string;

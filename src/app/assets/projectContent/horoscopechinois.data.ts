@@ -1,4 +1,4 @@
-import type { IProjectContent } from "./IProjectContent";
+import type { IProjectContent } from './IProjectContent';
 
 export const horoscopechinois: IProjectContent = {
     id: 4,
@@ -13,50 +13,43 @@ export const horoscopechinois: IProjectContent = {
         { channel: 'github', url: 'https://github.com/Mou2xie/HoroscopeChinois' },
         { channel: 'website', url: 'https://www.horoscopechinois.today/' },
     ],
-    image: ['/projects/horoscopechinois/1.png', '/projects/horoscopechinois/2.png', '/projects/horoscopechinois/3.png', '/projects/horoscopechinois/4.png', '/projects/horoscopechinois/5.png'],
+    image: [
+        '/projects/horoscopechinois/1.png',
+        '/projects/horoscopechinois/2.png',
+        '/projects/horoscopechinois/3.png',
+        '/projects/horoscopechinois/4.png',
+        '/projects/horoscopechinois/5.png',
+    ],
+    imageCaptions: {
+        '/projects/horoscopechinois/1.png': 'horoscopechinois.today — French-language homepage and zodiac finder.',
+        '/projects/horoscopechinois/2.png': 'horoscopechinois.today — zodiac-finder result.',
+        '/projects/horoscopechinois/3.png': 'horoscopechinois.today — daily zodiac content.',
+        '/projects/horoscopechinois/4.png': 'horoscopechinois.today — sign-specific daily reading.',
+        '/projects/horoscopechinois/5.png': 'horoscopechinois.today — Chinese zodiac information.',
+    },
     content: `
-    <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">My Role</h2>
-        <p>
-            Full-stack Developer & Product Designer
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Background, Problem &amp; Audience</h2>
+        <p>I developed horoscopechinois.today for French-speaking readers interested in Chinese astrology, targeting relevant Google search keywords. The product brings together two tasks: identifying a Chinese zodiac sign and finding that sign's daily content. This also created an operational challenge for me as a solo creator — publishing recurring French-language content in a form the website could display consistently.</p>
 
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">The Problem & Opportunity</h2>
-        <p>
-            Accessing cultural insights like the Chinese Zodiac is often a frustrating experience. The market is saturated with sites plagued by aggressive ads, outdated designs, and clutter. Users simply want to answer two questions: "Which sign am I?" and "What does my day look like?" without the friction. <br><br>
-            <strong>The Opportunity:</strong> To modernize this traditional vertical by delivering a clean, app-like web experience that respects the user's time and attention.
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Solution &amp; Key Features</h2>
+        <ul class="list-disc pl-5 space-y-2">
+            <li><strong>Zodiac finder:</strong> An interactive entry point helps a reader identify their sign.</li>
+            <li><strong>Daily sign content:</strong> Database-backed pages connect zodiac profiles with the day's published material.</li>
+            <li><strong>French-language presentation:</strong> The site focuses its navigation and editorial content on one language market.</li>
+            <li><strong>Content publishing workflow:</strong> An AI-assisted workflow generates and publishes structured content for the site.</li>
+            <li><strong>Responsive reading:</strong> Mobile-friendly layouts present sign information and daily content on smaller screens.</li>
+        </ul>
 
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">Target Audience</h2>
-        <p>
-            Francophone users interested in astrology and cultural wisdom who value aesthetics, speed, and mobile accessibility over traditional, cluttered information portals.
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Product Decisions</h2>
+        <p>I kept sign discovery close to the daily-content journey so visitors could find a relevant starting point. Focusing on French narrowed the editorial and localization scope. Separating the publishing workflow from the website allowed recurring content to be stored as data rather than maintained as individual pages in source code.</p>
 
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">Key Product Decisions</h2>
-        <p>
-            <ul class="list-disc pl-5 space-y-2">
-                <li><strong>Streamlined Discovery:</strong> I identified that many users don't know their sign. I built an interactive "Zodiac Finder" as a core entry point to lower the barrier to entry.</li>
-                <li><strong>Localization Strategy:</strong> Targeted the French-speaking market specifically to fill a gap for high-quality, culturally nuanced content in that region.</li>
-                <li><strong>Visual Hierarchy:</strong> Adopted a "Mobile-First" design philosophy using clean typography and immediate data presentation (0-5 star ratings) to make daily insights scannable in seconds.</li>
-            </ul>
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">My Contribution</h2>
+        <p>I independently created the website, its interface, application implementation and AI-driven content publishing workflow. The project joins a search-oriented content idea with the data and publishing system needed to operate it.</p>
 
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">Technical Implementation</h2>
-        <p>
-            This project showcases my ability to adopt bleeding-edge technologies for superior performance:
-            <ul class="list-disc pl-5 space-y-2 mt-2">
-                <li><strong>Modern Architecture:</strong> Built on <strong>Next.js 15 (App Router)</strong>. I utilized <strong>React Server Components</strong> to render content instantly on the server, significantly improving SEO and load speeds.</li>
-                <li><strong>Data Fetching:</strong> Instead of a traditional API layer, I implemented <strong>Server Actions</strong> to query the <strong>Supabase</strong> (PostgreSQL) database directly and securely, reducing latency and simplifying the codebase.</li>
-                <li><strong>Styling Engine:</strong> Early adopter of <strong>Tailwind CSS v4</strong> for a zero-runtime styling solution, paired with DaisyUI for consistent component design.</li>
-                <li><strong>Type Safety:</strong> Enforced strict <strong>TypeScript</strong> data modeling to handle complex fortune structures and zodiac profiles without runtime errors.</li>
-            </ul>
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Technical Implementation</h2>
+        <p>Next.js 15 App Router, React Server Components and Server Actions query daily content from Supabase PostgreSQL. TypeScript models the zodiac and content records. Tailwind CSS v4, DaisyUI and Lucide React provide the responsive interface. The zodiac finder supplies the interactive part of the discovery journey.</p>
 
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">Highlights</h2>
-        <p>
-            <ul class="list-disc pl-5 space-y-2">
-                <li><strong>Core Web Vitals:</strong> Achieved optimal performance metrics by using <code>next/image</code> to prevent Layout Shifts (CLS) and Turbopack for rapid development iterations.</li>
-                <li><strong>Future-Proofing:</strong> Pre-configured <strong>Zustand</strong> for global state management, ensuring the architecture can support user authentication and personalization features as the product scales.</li>
-            </ul>
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Outcome &amp; Trade-offs</h2>
+        <p>I delivered a French-language content site with a connected publishing workflow and database-backed daily pages. Recurring content needs editorial attention as well as automation. The documented implementation does not include accounts, email notifications, Chart.js visualizations or additional languages; those remained roadmap items.</p>
     `
 }

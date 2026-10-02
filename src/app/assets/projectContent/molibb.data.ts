@@ -1,4 +1,4 @@
-import type { IProjectContent } from "./IProjectContent";
+import type { IProjectContent } from './IProjectContent';
 
 export const molibb: IProjectContent = {
     id: 6,
@@ -13,49 +13,42 @@ export const molibb: IProjectContent = {
         { channel: 'github', url: 'https://github.com/Mou2xie/gameAccountManager/tree/main' },
         { channel: 'website', url: 'https://www.molibb.baby/' },
     ],
-    image: ['/projects/molibb/1.png', '/projects/molibb/2.png', '/projects/molibb/3.png', '/projects/molibb/4.png', '/projects/molibb/5.png'],
+    image: [
+        '/projects/molibb/1.png',
+        '/projects/molibb/2.png',
+        '/projects/molibb/3.png',
+        '/projects/molibb/4.png',
+        '/projects/molibb/5.png',
+    ],
+    imageCaptions: {
+        '/projects/molibb/1.png': 'molibb.baby — account-management overview.',
+        '/projects/molibb/2.png': 'molibb.baby — accounts and linked character records.',
+        '/projects/molibb/3.png': 'molibb.baby — editing an account record.',
+        '/projects/molibb/4.png': 'molibb.baby — adding character details.',
+        '/projects/molibb/5.png': 'molibb.baby — account information and notes.',
+    },
     content: `
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">My Role</h2>
-        <p>
-            Creator & Full-stack Developer.
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Background, Problem &amp; Audience</h2>
+        <p>A friend who plays Cross Gate needed a lightweight way to manage game accounts and characters. Account details have a hierarchy — main account, sub-account and character — that is awkward to represent as a flat list. I scoped the product around that concrete need, with a visual interface for keeping records and finding the characters relevant to a gameplay task.</p>
 
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">The Problem & Opportunity</h2>
-        <p>
-            Hardcore MMO players, guild leaders, and account boosters often manage dozens of characters across multiple regions. Currently, they resort to Excel spreadsheets, which are difficult to view on mobile, lack visual hierarchy, and cannot effectively model nested relationships (e.g., Main Account > Sub-Account > Character).<br><br>
-            <strong>The Opportunity:</strong> To replace abstract rows and columns with a visual, hierarchical database specifically designed for gaming assets, optimized for speed and mobile usage.
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Solution &amp; Key Features</h2>
+        <ul class="list-disc pl-5 space-y-2">
+            <li><strong>Account hierarchy:</strong> Organize main accounts, their sub-accounts and the characters belonging to each.</li>
+            <li><strong>Character records:</strong> Track fields such as class, level, job rank and notes, alongside task/status information.</li>
+            <li><strong>Tags and filtering:</strong> Use custom color-coded tags to organize and find characters.</li>
+            <li><strong>Local persistence:</strong> Keep account and character records in the browser through IndexedDB, without an application account/login step.</li>
+        </ul>
 
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">Target Audience</h2>
-        <p>
-            "Power gamers" and service providers (boosters) who need to track daily tasks, levels, and credentials across complex account portfolios without relying on internet connectivity.
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Product Decisions</h2>
+        <p>I matched the data model to the player's account structure and used cards and tags to make that structure visible. Local storage kept the initial scope focused on a single user's browser. Cloud synchronization, backup import/export and installable PWA support were possible extensions rather than requirements for the first delivery.</p>
 
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">Key Product Decisions</h2>
-        <p>
-            <ul class="list-disc pl-5 space-y-2">
-                <li><strong>Local-First Strategy:</strong> I prioritized a "No Login" experience. By storing data locally in the browser, I eliminated server latency and alleviated user concerns regarding credential privacy.</li>
-                <li><strong>Hierarchical Data Modeling:</strong> Unlike flat note-taking apps, I designed the database to support three levels of depth (Main Account → Sub-Account → Character), mirroring the actual structure of modern MMO game launchers.</li>
-                <li><strong>Operational Tags:</strong> Implemented a color-coded tagging system (e.g., "Daily Task," "Priority") to allow users to filter their assets based on immediate gameplay goals.</li>
-            </ul>
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">My Contribution</h2>
+        <p>I independently built and launched the tool for my friend using AI-assisted development. Feature development and launch took one day, based on my recorded delivery account. I owned the scope, interface, account/character model and implementation.</p>
 
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">Technical Implementation</h2>
-        <p>
-            I built this application using a bleeding-edge stack focused on client-side performance and code maintainability:
-            <ul class="list-disc pl-5 space-y-2 mt-2">
-                <li><strong>Framework:</strong> Built with <strong>Next.js 16 (App Router)</strong>, leveraging the latest React Server Components architecture.</li>
-                <li><strong>Storage Engine:</strong> Utilized <strong>Dexie.js</strong> (IndexedDB wrapper) instead of LocalStorage. This allows for asynchronous non-blocking operations, complex querying, and handling datasets larger than the standard 5MB browser limit.</li>
-                <li><strong>Styling:</strong> Adopted <strong>Tailwind CSS v4</strong> and DaisyUI 5 for a modern, themable UI with a zero-runtime CSS footprint.</li>
-            </ul>
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Technical Implementation</h2>
+        <p>Next.js 16 App Router, React 19 and TypeScript provide the application structure. Dexie.js wraps IndexedDB for local account and character data. A service layer separates database operations from UI components. Tailwind CSS v4, DaisyUI 5 and Lucide React support the interface.</p>
 
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">Highlights</h2>
-        <p>
-            <ul class="list-disc pl-5 space-y-2">
-                <li><strong>Service Layer Pattern:</strong> To ensure long-term maintainability, I decoupled the UI from the database logic using a strict Service Layer architecture. This ensures the code conforms to SOLID principles and allows for easy migration to a cloud backend in the future.</li>
-                <li><strong>Offline Persistence:</strong> Engineered the app to be fully functional without an internet connection, ensuring reliability for users with unstable connections.</li>
-            </ul>
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Outcome &amp; Trade-offs</h2>
+        <p>I delivered a focused tool for a specific user instead of expanding the first version into a general gaming platform. Local data remains tied to the browser: synchronization and backup/import-export were not shipped features in the documented version. Local persistence also differs from offline installation; PWA support remains a separate extension.</p>
     `
 }

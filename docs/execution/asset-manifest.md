@@ -61,3 +61,28 @@ MISSING: none
 - 截图未包含个人信息、凭据或后台数据。
 - 未伪造任何产品界面、用户数或评价。
 - 未在截图上添加未经验证的标注（如奖项徽章、指标数字）。
+
+## 7. Detail review assets — 2026-10-01
+
+This addendum supersedes the NovaAgent, Agent Yong and Fix My City gallery gaps above. Existing source assets remain intact.
+
+| Asset | Source / purpose | Delivered dimensions |
+| --- | --- | --- |
+| `public/projects/novaagent/1.png` | Public `https://www.novaagent.me/` landing-page capture | 1440×806 |
+| `public/projects/novaagent/2.png` | Public Nova Assistant conversation page, reached through the landing page; no conversation submitted | 1440×806 |
+| `public/projects/agentyong/current-home.png` | Public `https://www.agentyong.chat/` desktop entry screen | 1440×806 |
+| `public/projects/agentyong/current-mobile.png` | Same public application at a mobile viewport | 390×844 |
+| `public/projects/fixmycity/mobile-1.png` | Local `fixmycity_welcome/fixmycity_welcome/src/assets/1.png`, also displayed on the public landing page; resident home | 640×1428 |
+| `public/projects/fixmycity/mobile-2.png` | Same local asset directory, `2.png`; reporting wizard category step | 640×1428 |
+| `public/projects/fixmycity/mobile-3.png` | Same local asset directory, `3.png`; report details and status timeline | 640×1428 |
+| `public/projects/yongwork/current-home.png` | Updated local portfolio preview, homepage | 1440×1000 |
+| `public/projects/yongwork/current-portfolio.png` | Updated local portfolio preview, catalog | 1440×1000 |
+| `public/projects/yongwork/current-detail.png` | Updated local portfolio preview, NovaAgent case-study layout | 1440×1000 |
+
+All additions depict actual interfaces. Large source captures were resampled proportionally for delivery. Fix My City images depict the team-built prototype and are captioned accordingly; the report location shown is part of the existing public demo screenshot.
+
+The previous `fixmycity/1.png` is an admin **login screen**, not an authenticated operations dashboard. It remains on disk but is no longer in the revised gallery. No authentication was bypassed and no private dashboard content was captured.
+
+Transider's revised gallery retains `2.png` and `3.png`, the historical Chrome Web Store graphics containing its side-panel and notebook UI. Captions explicitly identify them as graphics. SpeakingPass, LingoPick, molibb and horoscope retain existing source screenshots, with descriptive captions; LingoPick is labeled historical/discontinued.
+
+Agent Yong's older `1.png` / `2.png` and the portfolio's older numbered assets remain on disk for provenance; new captures are referenced by the detail galleries. Tender Master remains a CLI record with no gallery. Older projects outside this review retain their assets and gallery references.

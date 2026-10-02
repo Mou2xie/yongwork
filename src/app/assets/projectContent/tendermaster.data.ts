@@ -14,47 +14,43 @@ export const tendermaster: IProjectContent = {
     links: [],
     image: [],
     content: `
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">The Problem & Opportunity</h2>
-        <p>
-            A bidding consultancy drafting government project proposals faced three compounding problems: strict and compressed deadlines, a shortage of writers fluent in procurement terminology and evaluation criteria, and inconsistent quality across whoever was available. <br><br>
-            <strong>The Opportunity:</strong> Automate the drafting, checking and assembly stages so specialist writers spend their time on judgement rather than on producing a first pass.
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Background, Problem &amp; Audience</h2>
+        <p>A bidding consultancy needed support for drafting formal Chinese government-project proposals. Compressed deadlines, scarce specialist writers and uneven writing quality made the workflow difficult to scale. The users were internal bid-writing staff: they needed a structured first draft and a consistent review process that left domain judgment with the people responsible for submission.</p>
 
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">Target Audience</h2>
-        <p>
-            The client's internal bid-writing staff — operators comfortable in a terminal who needed throughput on long, formally structured Chinese tender documents, not a graphical product.
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Solution &amp; Key Features</h2>
+        <p>I delivered a Python CLI workflow that takes a hierarchical Markdown outline through planning, chapter drafting, automated checking and Word assembly. The output is a formatted draft for human review.</p>
+        <ul class="list-disc pl-5 space-y-2">
+            <li><strong>Outline decomposition:</strong> Parse the heading hierarchy into leaf sections that each receive an individual writing plan.</li>
+            <li><strong>Specialized roles:</strong> A planner defines objectives and requirements, a writer drafts the section, and a separate checker evaluates it against a seven-dimension rubric.</li>
+            <li><strong>Feedback-driven revision:</strong> Failed checks return specific feedback and previous content to the writer, up to configurable retry limits.</li>
+            <li><strong>Inspectable artifacts:</strong> Persist plans and chapter output as JSON for inspection, debugging and partial reruns.</li>
+            <li><strong>Word delivery:</strong> Restore the original heading hierarchy and assemble chapters into a formatted <code>.docx</code>.</li>
+        </ul>
 
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">My Contribution</h2>
-        <p>
-            I independently implemented the entire tool: the LangGraph workflow, the planner / writer / quality-checker roles, the Pydantic contracts, the structured JSON artifacts, the feedback-driven retry loop and the python-docx output. I also made the deliberate decision to ship no user interface.
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Product Decisions</h2>
+        <ul class="list-disc pl-5 space-y-2">
+            <li><strong>Match the internal workflow:</strong> The client had no graphical-interface requirement. A terminal workflow kept the delivery focused on drafting and document output.</li>
+            <li><strong>Separate the stages of writing:</strong> Planning, drafting and checking have different responsibilities. Separate prompts and contracts let each stage be refined independently.</li>
+            <li><strong>Make revision specific:</strong> Pass checker feedback and the existing chapter back to the writer so a retry addresses the failed criteria.</li>
+            <li><strong>Keep the human handoff explicit:</strong> A Word draft fits the client's review and editing process before a proposal is submitted.</li>
+        </ul>
 
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">How It Works</h2>
-        <p>
-            A hierarchical Markdown outline (<code>menu.md</code>) is decomposed into leaf sections. Each section receives a generated writing plan, then a drafting pass, then an independent quality check against a seven-dimension rubric. A failed chapter is returned to the writer with specific feedback and previous content so it can be revised rather than blindly regenerated. Passing chapters are persisted as JSON and finally assembled into a formatted <code>.docx</code> with the original heading hierarchy restored.
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">My Contribution</h2>
+        <p>I independently designed and implemented the workflow as a custom client delivery, covering requirements, iteration and handoff. My engineering scope included LangGraph orchestration, the three agent roles, Pydantic contracts, structured artifacts, the retry loop and document assembly.</p>
 
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">Technical Implementation</h2>
-        <p>
-            <ul class="list-disc pl-5 space-y-2">
-                <li><strong>Orchestration:</strong> LangGraph <code>@task</code> and <code>@entrypoint</code> primitives organise planning, writing and checking into explicit stages with a branching retry loop.</li>
-                <li><strong>Model access:</strong> LangChain with <code>langchain-openrouter</code>, so provider and model can be swapped by configuration rather than code.</li>
-                <li><strong>Contracts:</strong> Pydantic v2 models define the inter-agent boundary — a nine-field <code>Plan</code>, a four-field chapter output, and a binary pass/fail check result with feedback — and validate structured model output at runtime.</li>
-                <li><strong>Document generation:</strong> <code>python-docx</code> assembles headings at levels 1–9, with a custom Chinese numeral parser for correct ordering and heading de-duplication.</li>
-                <li><strong>Inspectability:</strong> All planning data and generated chapters persist as JSON, which makes debugging and partial reruns possible.</li>
-                <li><strong>Tooling:</strong> Python ≥3.11 with <code>uv</code> for dependency management.</li>
-            </ul>
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Technical Implementation</h2>
+        <ul class="list-disc pl-5 space-y-2">
+            <li><strong>Orchestration:</strong> Python ≥3.11 with LangGraph <code>@task</code> and <code>@entrypoint</code> primitives. Chapters move sequentially through the stages, with a branching loop for checking and revision.</li>
+            <li><strong>Structured contracts:</strong> Pydantic v2 validates the writing plan, chapter output and pass/fail result with feedback at runtime.</li>
+            <li><strong>Model access:</strong> LangChain and <code>langchain-openrouter</code> provide configurable model selection through OpenRouter.</li>
+            <li><strong>Document assembly:</strong> <code>python-docx</code> generates heading levels 1–9. Python logic restores parent/child hierarchy, sorts Chinese-numbered headings, removes duplicate headings and normalizes content.</li>
+            <li><strong>Tooling:</strong> <code>uv</code> manages dependencies; JSON files preserve intermediate plans and chapters.</li>
+        </ul>
 
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">Outcomes</h2>
-        <p>
-            Delivered to the client as a working internal tool. The pipeline produces a formatted Word draft for human review before any submission.
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Outcomes</h2>
+        <p>Delivered as a working internal tool, Tender Master connects a client's writing requirements to a repeatable planning, drafting, checking and assembly process. The final handoff is an editable Word draft, with intermediate artifacts available for inspection.</p>
 
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">Trade-offs & Current Status</h2>
-        <p>
-            Chapters are generated sequentially. Parallel generation and per-chapter-type specialised checkers are possible directions, but they are not implemented. Retry limits are configurable; the exact terminal behaviour when a chapter still fails after exhausting them is not established. Most importantly, prompt instructions and schema validation do not by themselves guarantee regulatory compliance, factual correctness, or acceptance of a bid — the output is a draft for a human, and no measured turnaround or win-rate improvement is claimed.
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Trade-offs &amp; Current Status</h2>
+        <p>Sequential chapter generation keeps the workflow explicit but limits throughput; parallel generation remains a possible extension. Automated checks validate structure and apply a writing rubric, while specialist human review remains necessary for factual accuracy and procurement requirements. Tender Master is a delivered CLI tool without a public frontend or repository.</p>
     `,
 };

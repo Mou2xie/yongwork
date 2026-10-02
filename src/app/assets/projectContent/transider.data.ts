@@ -23,63 +23,51 @@ export const transider: IProjectContent = {
         },
     ],
     image: [
-        '/projects/transider/1.png',
         '/projects/transider/2.png',
         '/projects/transider/3.png',
-        '/projects/transider/4.png',
-        '/projects/transider/5.png',
     ],
+    imageCaptions: {
+        '/projects/transider/2.png': 'Historical Chrome Web Store graphic showing the Transider lookup side panel.',
+        '/projects/transider/3.png': 'Historical Chrome Web Store graphic showing the Transider vocabulary notebook.',
+    },
     content: `
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">My Role</h2>
-        <p>
-            Indie Developer &amp; Full-Stack Engineer
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Background, Problem &amp; Audience</h2>
+        <p>Transider began as a tool for my own English learning. I wanted to read English articles, look up unfamiliar words and keep useful vocabulary without switching between tools. Existing options felt too complex or put features behind a paywall. A standalone definition also loses an important part of learning: the sentence in which I encountered the word and the article I could return to. The target user is a language learner who wants vocabulary collection to fit naturally into online reading.</p>
 
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">The Problem & Opportunity</h2>
-        <p>
-            Language learners reading online hit a "context gap": translation tools return isolated definitions, so the connection to how the word was actually used is lost within minutes. <br><br>
-            <strong>The Opportunity:</strong> Capture the moment of curiosity — save the word together with the sentence and the source page — turning passive reading into active, context-rich learning without interrupting the reading flow.
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Solution &amp; Key Features</h2>
+        <p>I built a Chrome extension that keeps contextual lookup and a personal vocabulary notebook alongside the original webpage.</p>
+        <ul class="list-disc pl-5 space-y-2">
+            <li><strong>In-page capture:</strong> Double-click an unfamiliar word to look it up with its surrounding sentence.</li>
+            <li><strong>Reading side panel:</strong> View translation and vocabulary information while keeping the article open.</li>
+            <li><strong>Personal notebook:</strong> Save words with sentence context, review them through pagination, play pronunciation and return to the source link.</li>
+            <li><strong>Learning preferences:</strong> Configure auto-save behavior and side-panel controls.</li>
+            <li><strong>Data portability:</strong> Export the vocabulary collection as an Excel file for use outside the extension.</li>
+        </ul>
 
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">Target Audience</h2>
-        <p>
-            Self-directed learners who read native English content regularly and want vocabulary to accumulate naturally as a side effect of reading, rather than as a separate study session.
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Product Decisions</h2>
+        <ul class="list-disc pl-5 space-y-2">
+            <li><strong>Preserve the reading context:</strong> Capture the word, surrounding sentence and source page together, so review can revisit actual usage.</li>
+            <li><strong>Use the browser as the workspace:</strong> A side panel places lookup beside the article instead of making a separate application the center of the journey.</li>
+            <li><strong>Separate dictionary data from personal vocabulary:</strong> Supabase supplies dictionary entries; the learner's saved collection lives locally in the browser.</li>
+            <li><strong>Keep the collection portable:</strong> Excel export makes the vocabulary useful beyond this one tool.</li>
+        </ul>
 
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">Key Product Decisions</h2>
-        <p>
-            <ul class="list-disc pl-5 space-y-2">
-                <li><strong>Side panel instead of a popup:</strong> I deliberately used the Chrome Side Panel API so the vocabulary list can sit alongside the article. A popup forces the reader to toggle an overlay, which creates context-switching fatigue.</li>
-                <li><strong>Context is mandatory, not optional:</strong> The system stores the source sentence with every word, shifting the product from "what does this mean" to "how is this used".</li>
-                <li><strong>Local-first storage:</strong> Saved vocabulary lives in the browser rather than on a server, which keeps the user's reading history private and the tool usable offline.</li>
-                <li><strong>No lock-in:</strong> An Excel (.xlsx) export lets users move their collection into spaced-repetition tools such as Anki instead of trapping it in the extension.</li>
-            </ul>
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">My Contribution</h2>
+        <p>I independently designed, built, published and maintained the extension. My scope covers the product and interface design, content-script interactions, side-panel UI, vocabulary workflow, persistence, cross-context messaging and Chrome Web Store release. Transider was my first independently developed and publicly released software product.</p>
 
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">Technical Implementation</h2>
-        <p>
-            <ul class="list-disc pl-5 space-y-2">
-                <li><strong>Architecture:</strong> Manifest V3 with a content script, a service worker and a Side Panel UI, built with <strong>WXT</strong>, React 19 and TypeScript.</li>
-                <li><strong>Content interaction:</strong> Double-click word detection, sentence-level context extraction and highlighted word rendering inside the page's content scripts.</li>
-                <li><strong>State:</strong> Zustand manages Side Panel UI state, including pagination and view transitions.</li>
-                <li><strong>Storage split:</strong> <code>localforage</code> over IndexedDB persists the user's vocabulary locally for offline capability, while Supabase is queried only for dictionary data — saved words are never written to the cloud.</li>
-                <li><strong>Messaging:</strong> <code>webext-bridge</code> provides typed, reliable message passing between the ephemeral service worker and content scripts.</li>
-                <li><strong>Export:</strong> Vocabulary export through <code>xlsx</code> (SheetJS).</li>
-            </ul>
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Technical Implementation</h2>
+        <ul class="list-disc pl-5 space-y-2">
+            <li><strong>Extension architecture:</strong> WXT, React 19 and TypeScript target Chrome Manifest V3 with content scripts, a service worker and the Side Panel API.</li>
+            <li><strong>Context extraction:</strong> Content scripts detect words, extract source sentences and render highlighted vocabulary in context.</li>
+            <li><strong>State and communication:</strong> Zustand manages UI state including pagination; <code>webext-bridge</code> provides typed messaging between content scripts and the service worker.</li>
+            <li><strong>Persistence:</strong> <code>localforage</code> over IndexedDB and extension runtime storage support the local vocabulary workflow. Supabase PostgreSQL is the dictionary data source.</li>
+            <li><strong>Export:</strong> <code>xlsx</code> assembles the Excel vocabulary file. The interface uses CSS.</li>
+        </ul>
 
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">Outcomes</h2>
-        <p>
-            <ul class="list-disc pl-5 space-y-2">
-                <li>My first independently developed and publicly released software product, published to the Chrome Web Store.</li>
-                <li><strong>1,100+ monthly active users</strong> in the August 2026 reporting context, from the Chrome Web Store Developer Dashboard.</li>
-                <li>Continues to be iterated and operated.</li>
-            </ul>
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Outcomes</h2>
+        <p>Transider was published to the Chrome Web Store and recorded <strong>1,100+ monthly active users in the August 2026 reporting context</strong>, according to the Chrome Web Store Developer Dashboard. I continue to iterate on and operate it. Its vocabulary workflow also became the foundation for the later LingoPick experiment.</p>
 
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">Trade-offs & Current Status</h2>
-        <p>
-            The trickiest engineering constraint was Manifest V3's service-worker lifecycle: the background script can go dormant at any time, so message passing and dictionary fetches had to tolerate a cold worker rather than assume a live connection. Keeping dictionary fetching off the content script also protects the host page's performance, at the cost of a round trip when the side panel opens.
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Trade-offs &amp; Current Status</h2>
+        <p>Local persistence lets users retain and review saved vocabulary without depending on a vocabulary server, but does not provide cross-device synchronization. Dictionary requests still rely on the remote data source. The extension also has to coordinate separate browser contexts under the Manifest V3 service-worker lifecycle.</p>
     `,
 };

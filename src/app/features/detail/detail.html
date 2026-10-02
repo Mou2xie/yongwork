@@ -33,7 +33,7 @@
 
     <!-- Snapshot: role, timeline, scope and status. Only populated fields render. -->
     @if (snapshot().length > 0) {
-    <dl class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-3 border-t border-normal-text/25 pt-5">
+    <dl class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-3 border-t border-normal-text/25 pt-5">
         @for (row of snapshot(); track row.label) {
         <div>
             <dt class="text-xs uppercase tracking-wide text-accent">{{ row.label }}</dt>
@@ -42,25 +42,20 @@
         }
     </dl>
     }
-
-    @if (pageContent()?.scopeNote) {
-    <p class="mt-5 text-sm border-l-2 border-accent/50 pl-3 text-normal-text">
-        {{ pageContent()?.scopeNote }}
-    </p>
-    }
 </div>
 
 <!-- Gallery renders only when the project actually has images. -->
 @if (imageCount() > 0) {
-<div class="my-10">
+<figure class="my-10" aria-label="Project screenshots">
     <div
         class="relative group overflow-hidden rounded-2xl shadow-xl bg-gray-50 dark:bg-zinc-900/50 aspect-16/10 lg:aspect-video">
         <!-- Images Container -->
         <div class="flex transition-transform duration-700 ease-in-out h-full"
             [style.transform]="'translateX(-' + (currentIndex() * 100) + '%)'">
             @for (item of pageContent()?.image; track item) {
-            <div class="shrink-0 w-full h-full flex items-center justify-center p-2 lg:p-4">
-                <img [src]="item" [alt]="pageContent()?.projectName + ' screenshot ' + ($index + 1)"
+            <div class="shrink-0 w-full h-full flex items-center justify-center p-2 lg:p-4"
+                [attr.aria-hidden]="$index !== currentIndex() ? 'true' : null">
+                <img [src]="item" [alt]="imageCaption(item, $index)"
                     class="max-w-full max-h-full object-contain rounded-xl shadow-sm" />
             </div>
             }
@@ -69,7 +64,7 @@
         <!-- Navigation controls only make sense with more than one image. -->
         @if (imageCount() > 1) {
         <button type="button" (click)="prevImage()" aria-label="Previous image"
-            class="absolute left-2 lg:left-6 top-1/2 -translate-y-1/2 p-2 lg:p-4 rounded-full bg-black/10 dark:bg-white/10 backdrop-blur-xl border border-white/20 text-white transition-all duration-300 hover:bg-black/20 dark:hover:bg-white/20 active:scale-90 z-10">
+            class="absolute left-2 lg:left-6 top-1/2 -translate-y-1/2 p-2 lg:p-4 rounded-full bg-bg/80 backdrop-blur-xl border border-normal-text/25 text-highlight-text transition-all duration-300 hover:bg-bg active:scale-90 z-10">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
                 aria-hidden="true">
@@ -78,7 +73,7 @@
         </button>
 
         <button type="button" (click)="nextImage()" aria-label="Next image"
-            class="absolute right-2 lg:right-6 top-1/2 -translate-y-1/2 p-2 lg:p-4 rounded-full bg-black/10 dark:bg-white/10 backdrop-blur-xl border border-white/20 text-white transition-all duration-300 hover:bg-black/20 dark:hover:bg-white/20 active:scale-90 z-10">
+            class="absolute right-2 lg:right-6 top-1/2 -translate-y-1/2 p-2 lg:p-4 rounded-full bg-bg/80 backdrop-blur-xl border border-normal-text/25 text-highlight-text transition-all duration-300 hover:bg-bg active:scale-90 z-10">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
                 aria-hidden="true">
@@ -87,21 +82,29 @@
         </button>
 
         <!-- Dots Indicator -->
-        <div class="absolute bottom-4 lg:bottom-8 left-1/2 -translate-x-1/2 flex gap-1.5 lg:gap-2.5 z-10">
+        <div class="absolute bottom-4 lg:bottom-8 left-1/2 -translate-x-1/2 flex gap-1.5 lg:gap-2.5 rounded-full bg-bg/80 border border-normal-text/25 px-3 py-2 z-10">
             @for (item of pageContent()?.image; track $index) {
             <button type="button" (click)="currentIndex.set($index)"
                 [attr.aria-label]="'Go to image ' + ($index + 1)"
                 [attr.aria-current]="currentIndex() === $index ? 'true' : null"
                 class="h-1.5 lg:h-2 rounded-full transition-all duration-500" [class.w-6]="currentIndex() === $index"
                 [class.lg:w-10]="currentIndex() === $index" [class.w-1.5]="$index !== currentIndex()"
-                [class.lg:w-2]="$index !== currentIndex()" [class.bg-highlight-text]="currentIndex() === $index"
-                [class.bg-black/20]="$index !== currentIndex()"
-                [class.dark:bg-white/20]="$index !== currentIndex()"></button>
+                [class.lg:w-2]="$index !== currentIndex()" [class.bg-accent]="currentIndex() === $index"
+                [class.bg-normal-text/50]="$index !== currentIndex()"></button>
             }
         </div>
         }
     </div>
-</div>
+    <figcaption class="mt-3 text-sm text-center" aria-live="polite">
+        @for (item of pageContent()?.image; track item) {
+        @if ($index === currentIndex()) {
+        {{ imageCaption(item, $index) }}
+        <a [href]="item" target="_blank" rel="noopener noreferrer"
+            class="ml-2 text-accent underline underline-offset-4">View full size</a>
+        }
+        }
+    </figcaption>
+</figure>
 }
 
 <div class="mt-10">

@@ -24,53 +24,42 @@ export const lingoPick: IProjectContent = {
         '/projects/lingopick/4.png',
         '/projects/lingopick/5.png',
     ],
+    imageCaptions: {
+        '/projects/lingopick/1.png': 'LingoPick historical interface — reading with the translation side panel.',
+        '/projects/lingopick/2.png': 'LingoPick historical interface — a saved word with sentence context.',
+        '/projects/lingopick/3.png': 'LingoPick historical interface — flashcard review.',
+        '/projects/lingopick/4.png': 'LingoPick historical interface — membership login.',
+        '/projects/lingopick/5.png': 'LingoPick historical interface — membership and account page.',
+    },
     content: `
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">My Role</h2>
-        <p>
-            Independent Developer — product, design and implementation
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Background, Problem &amp; Audience</h2>
+        <p>LingoPick extended the vocabulary-learning workflow I had built in Transider. The core audience remained people learning English while browsing, but this experiment added contextual AI translation, flashcard review and a paid membership offering. It explored how a focused free extension could become a broader learning product with premium functionality.</p>
 
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">The Problem & Opportunity</h2>
-        <p>
-            Transider proved that context-aware vocabulary capture works, but it was free and unmonetised. The question LingoPick set out to answer was whether the same core idea could support a paid tier. <br><br>
-            <strong>The Opportunity:</strong> Extend the free feature set with an AI translation layer and a premium membership, and find out whether users would pay for it.
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Solution &amp; Key Features</h2>
+        <ul class="list-disc pl-5 space-y-2">
+            <li><strong>Context-aware AI translation:</strong> Look up English words in the context of the page being read; the historical product offering supported translation into 33 languages.</li>
+            <li><strong>Vocabulary collection:</strong> Keep a private word bank with surrounding sentences for later review.</li>
+            <li><strong>Flashcards:</strong> Revisit collected vocabulary through a dedicated review interface.</li>
+            <li><strong>Premium membership:</strong> Gumroad integration and licence validation enable access to paid features.</li>
+        </ul>
 
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">Target Audience</h2>
-        <p>
-            The same intermediate-to-advanced learners as Transider, with a subset willing to pay for AI-generated context, flashcards and broader language coverage.
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Product Decisions</h2>
+        <p>I retained the reading-to-collection journey from Transider and extended it into translation, review and membership. Using Gumroad kept payments and licence validation within an existing platform. Separate translation-provider services gave the implementation a place to integrate Gemini and DeepSeek without coupling each provider directly to the interface.</p>
 
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">Key Product Decisions</h2>
-        <p>
-            <ul class="list-disc pl-5 space-y-2">
-                <li><strong>Premium over free:</strong> Rather than shipping a second free tool, I built the complete premium membership experience on top of Transider's free feature set — the commercially interesting question.</li>
-                <li><strong>Payments via Gumroad:</strong> I integrated Gumroad licence validation to gate premium functionality, which avoided building billing infrastructure for an experiment.</li>
-                <li><strong>Provider-agnostic AI:</strong> Translation is abstracted behind a service that can switch between Google Gemini and DeepSeek, so model choice is a configuration decision rather than a rewrite.</li>
-                <li><strong>Context-first, again:</strong> Saving the surrounding sentence alongside the word remained mandatory — the lesson carried over from Transider.</li>
-            </ul>
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">My Contribution</h2>
+        <p>I independently built the extension and its complete premium membership functionality, including Gumroad integration. My scope covered product/interface design and the implementation that connected AI translation, vocabulary collection, review and paid access.</p>
 
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">Technical Implementation</h2>
-        <p>
-            <ul class="list-disc pl-5 space-y-2">
-                <li><strong>Extension:</strong> WXT, React 19, TypeScript and Vite, targeting Manifest V3.</li>
-                <li><strong>AI integration:</strong> A <code>TranslationService</code> switching between Google Gemini (<code>@google/genai</code>) and DeepSeek via the OpenAI SDK, with structured prompt engineering to force deterministic JSON output for consistent UI rendering.</li>
-                <li><strong>Backend:</strong> Supabase PostgreSQL for word and collection data, with Supabase Auth.</li>
-                <li><strong>Service separation:</strong> Business logic was decoupled from UI components into dedicated services (including database and licence validation) so responsibilities stayed testable and separable.</li>
-                <li><strong>Styling:</strong> Tailwind CSS v4 with DaisyUI.</li>
-                <li><strong>Local performance:</strong> <code>localforage</code> for local caching of user settings and <code>use-immer</code> for immutable state updates.</li>
-            </ul>
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Technical Implementation</h2>
+        <ul class="list-disc pl-5 space-y-2">
+            <li><strong>Extension:</strong> WXT, React 19, TypeScript and Vite, styled with Tailwind CSS v4 and DaisyUI.</li>
+            <li><strong>AI services:</strong> Google Gemini through <code>@google/genai</code> and DeepSeek through the OpenAI SDK, with dedicated translation-provider logic.</li>
+            <li><strong>Data and membership:</strong> Supabase PostgreSQL and Auth, localforage, use-immer, and separate database and licence-validation services.</li>
+        </ul>
 
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">Outcome & What I Learned</h2>
-        <p>
-            LingoPick shipped with working premium membership functionality, but product performance was weak and I stopped development and operation. The useful outcome is the lesson: a paid tier on top of an existing free tool needs a reason to exist that users can feel, and adding AI and flashcards was not enough to create one. It is documented here as a product experiment rather than a current product.
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Outcome &amp; Product Learning</h2>
+        <p>I implemented the premium membership offering, but product performance was weak and I stopped development and operation. The experience gave me practical exposure to moving from a free utility to a paid product, and to making a stop/continue decision after delivery. The case study records that experiment without attributing its outcome to an untested explanation.</p>
 
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">Boundaries</h2>
-        <p>
-            This case describes implemented functionality only. No paying-customer count, subscription-billing mechanics, revenue or cross-device synchronisation of the personal vocabulary bank is claimed.
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Trade-offs &amp; Current Status</h2>
+        <p>LingoPick is discontinued. Its historical interface is shown in the gallery. Flashcards were implemented; a spaced-repetition algorithm and a React Native companion remained roadmap ideas.</p>
     `,
 };

@@ -17,53 +17,50 @@ export const novaagent: IProjectContent = {
         { channel: 'github', url: 'https://github.com/Mou2xie/agent_builder_backend' },
         { channel: 'github', url: 'https://github.com/Mou2xie/agent_builder_rag_service' },
     ],
-    image: [],
+    image: [
+        '/projects/novaagent/2.png',
+        '/projects/novaagent/1.png',
+    ],
+    imageCaptions: {
+        '/projects/novaagent/2.png': 'NovaAgent public assistant — shared conversation page, captured October 2026.',
+        '/projects/novaagent/1.png': 'NovaAgent landing page — entry point for creating an agent, captured October 2026.',
+    },
     content: `
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">The Problem & Opportunity</h2>
-        <p>
-            Building a useful AI assistant still required assembling an LLM provider, a retrieval pipeline, a prompt layer and a host application. Classmates who had seen Agent Yong wanted their own personalised agent but had no practical route to one. <br><br>
-            <strong>The Opportunity:</strong> A zero-code platform where anyone could create, configure and share an agent grounded in their own private documents, without touching an SDK.
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Background, Problem &amp; Audience</h2>
+        <p>NovaAgent grew out of Agent Yong. After classmates tried my conversational portfolio, they wanted personalized assistants of their own. Our capstone advisor suggested turning that interest into a platform anyone could use. Market and user-demand research shaped the direction: individuals and small businesses needed a lightweight way to turn private knowledge into an interactive assistant without assembling their own AI infrastructure.</p>
 
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">Target Audience</h2>
-        <p>
-            Individuals and small teams who hold useful private knowledge — product guides, internal FAQs, documentation — and want an assistant over it without hiring engineers or standing up infrastructure.
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Solution &amp; Key Features</h2>
+        <p>We built a zero-code agent platform for use cases such as product guides, help desks and personal knowledge assistants. The core journey is to configure an agent, add its knowledge, and share a conversation page.</p>
+        <ul class="list-disc pl-5 space-y-2">
+            <li><strong>Agent configuration:</strong> Set a persona, system behavior and conversation tone through a management dashboard.</li>
+            <li><strong>Private knowledge:</strong> Upload PDF, DOCX, TXT or Markdown documents and see processing updates while they are prepared for retrieval.</li>
+            <li><strong>Keyword rules:</strong> Configure instructions that extend or override the system prompt when specified keywords appear.</li>
+            <li><strong>Lightweight distribution:</strong> Share a mobile-friendly agent page through a link or QR code.</li>
+            <li><strong>Streaming chat:</strong> Let visitors read a response as it arrives.</li>
+        </ul>
 
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">My Contribution</h2>
-        <p>
-            I led the project end-to-end within a five-person team and was the primary full-stack AI workflow contributor.
-            <ul class="list-disc pl-5 space-y-2">
-                <li><strong>Zero-code agent dashboard:</strong> Persona, system behaviour, conversation tone and keyword-based guardrail rules, all configurable without code.</li>
-                <li><strong>RAG ingestion service:</strong> A Python/FastAPI background service accepting PDF, DOCX, TXT and MD, performing chunking and embedding generation, and reporting processing status in real time.</li>
-                <li><strong>Keyword-rule chat middleware:</strong> Dynamically overrides or extends the system prompt based on user-defined keyword rules.</li>
-                <li><strong>Public agent interface:</strong> A mobile-friendly shared conversation page for lightweight distribution and onboarding.</li>
-                <li><strong>Project management:</strong> Maintained the team's Notion workspace covering scope, task board, milestones, meeting notes and decisions.</li>
-            </ul>
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Product Decisions</h2>
+        <ul class="list-disc pl-5 space-y-2">
+            <li><strong>Make configuration the product:</strong> The dashboard exposes persona, knowledge and behavior settings so users can shape an assistant without editing prompts in source code.</li>
+            <li><strong>Show the work behind an upload:</strong> Document ingestion happens asynchronously. Realtime processing status makes that waiting stage visible in the creator journey.</li>
+            <li><strong>Design sharing as part of creation:</strong> A standalone conversation page gives the creator a direct way to put the agent in front of its audience, including people on phones.</li>
+        </ul>
 
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">Technical Implementation</h2>
-        <p>
-            <ul class="list-disc pl-5 space-y-2">
-                <li><strong>Frontend:</strong> React 19, TypeScript, Vite, Tailwind CSS v4, React Router v7 for navigation, TanStack Query for server state and Zustand for authentication state.</li>
-                <li><strong>Streaming API:</strong> A Hono-based serverless agent API on Cloudflare Workers using LangChain and the Vercel AI SDK for streaming responses and multi-provider access through OpenRouter.</li>
-                <li><strong>Retrieval:</strong> Document ingestion, chunking, embeddings, vector similarity search and retrieval implemented with Supabase, custom PostgreSQL RPC functions and embedding-based matching.</li>
-                <li><strong>Realtime sync:</strong> Supabase Realtime subscriptions keep asynchronous ingestion tasks and their processing states synchronised across the application.</li>
-                <li><strong>Deployment:</strong> Frontend on Vercel, chat API on Cloudflare Workers, and the Python/FastAPI RAG and embedding service personally deployed on Railway.</li>
-            </ul>
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">My Contribution</h2>
+        <p>I led end-to-end development within a five-person capstone team and was the primary full-stack and AI workflow contributor. I personally designed and built the agent dashboard, background RAG ingestion service, keyword-rule chat middleware and public conversation interface. I also maintained our Notion workspace for scope, task breakdown, milestones, meeting notes and decisions, connecting product planning with day-to-day delivery.</p>
 
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">Outcomes</h2>
-        <p>
-            <ul class="list-disc pl-5 space-y-2">
-                <li><strong>1st Place — Mobile and Web Development Winter 2026 ACSIT Capstone Showcase</strong> (team award).</li>
-                <li>NovaAgent was confirmed running in September 2026. This is a dated operating status, not an uptime guarantee.</li>
-            </ul>
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Technical Implementation</h2>
+        <ul class="list-disc pl-5 space-y-2">
+            <li><strong>Frontend:</strong> React 19, TypeScript, Vite and Tailwind CSS v4, with React Router, TanStack Query for server state and Zustand for authentication state.</li>
+            <li><strong>Knowledge pipeline:</strong> Python and FastAPI load documents, split them into chunks, generate embeddings and update ingestion task status. Supabase Realtime delivers those updates to the dashboard.</li>
+            <li><strong>Retrieval and chat:</strong> Supabase PostgreSQL RPC functions perform vector similarity retrieval. A Hono API on Cloudflare Workers uses LangChain, the Vercel AI SDK and OpenRouter to orchestrate streamed responses.</li>
+            <li><strong>Deployment:</strong> The frontend runs on Vercel and the chat API on Cloudflare Workers. I personally deployed the Python RAG and embedding service on Railway.</li>
+        </ul>
 
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">Trade-offs & Current Status</h2>
-        <p>
-            The system deliberately spans three services — a Workers API, a Vercel frontend and a Railway Python service — which buys provider flexibility and independent scaling at the cost of more moving parts to operate. Ongoing feature iteration beyond the capstone has not been separately confirmed.
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Outcomes</h2>
+        <p>Our five-person team won <strong>1st Place — Mobile and Web Development Winter 2026 ACSIT Capstone Showcase</strong>. NovaAgent brought together product research, team coordination and hands-on AI engineering in a working web platform. It was confirmed running in September 2026.</p>
+
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Trade-offs &amp; Current Status</h2>
+        <p>Separating the frontend, streaming API and document-processing service gives each stage its own deployment boundary, but adds coordination and operational complexity. Embedding retrieval and keyword rules support grounded, configurable conversations; they still depend on document quality, retrieval relevance and model behavior. The project remains a team capstone with a publicly accessible site.</p>
     `,
 };

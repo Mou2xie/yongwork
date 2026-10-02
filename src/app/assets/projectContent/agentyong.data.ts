@@ -14,52 +14,49 @@ export const agentyong: IProjectContent = {
         { channel: 'github', url: 'https://github.com/Mou2xie/agent_me' },
         { channel: 'website', url: 'https://www.agentyong.chat/' },
     ],
-    image: ['/projects/agentyong/1.png', '/projects/agentyong/2.png'],
+    image: [
+        '/projects/agentyong/current-home.png',
+        '/projects/agentyong/current-mobile.png',
+    ],
+    imageCaptions: {
+        '/projects/agentyong/current-mobile.png': 'Agent Yong — mobile conversation entry screen, captured October 2026.',
+        '/projects/agentyong/current-home.png': 'Agent Yong — conversation entry screen with quick-question prompts, captured October 2026.',
+    },
     content: `
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">The Problem & Opportunity</h2>
-        <p>
-            A static resume is a one-way broadcast. Recruiters sift through hundreds of documents, and a portfolio site shows every visitor the same thing regardless of what they actually care about — the hiring manager wants architecture decisions, the recruiter wants role history, the engineer wants to know how the retrieval works. <br><br>
-            <strong>The Opportunity:</strong> Turn the profile into a conversation, so each visitor can pull the depth they want on their own terms.
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Background, Problem &amp; Audience</h2>
+        <p>While designing my portfolio, I found that different visitors wanted different parts of my background. A recruiter might look for career history, an engineering manager for architecture decisions, and a collaborator for product thinking. A static page presents the same sequence to everyone. I wanted visitors to ask their own questions and follow the details relevant to them. At the same time, I was learning AI agent development, making this a practical product to build around a real communication problem.</p>
 
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">Target Audience</h2>
-        <p>
-            Recruiters, hiring managers and technical leads evaluating my fit. The design goal is a low-friction first interaction that converts a passive document read into an active exploration.
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Solution &amp; Key Features</h2>
+        <p>Agent Yong is a conversational portfolio for recruiters, hiring managers and collaborators. Visitors can explore my professional experience, projects, technical skills and product decisions through natural dialogue.</p>
+        <ul class="list-disc pl-5 space-y-2">
+            <li><strong>Guided first questions:</strong> Preset prompts such as an introduction, project showcase and PM/technical background help a visitor start without composing a question from scratch.</li>
+            <li><strong>Follow-up exploration:</strong> Conversation messages provide context for questions that dig further into a project or experience.</li>
+            <li><strong>Document-grounded answers:</strong> An indexed knowledge collection gives the agent access to full records about my work.</li>
+            <li><strong>Responsive, multilingual interaction:</strong> A mobile-friendly interface streams responses, with instructions for the agent to reply in the visitor's language.</li>
+        </ul>
 
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">My Contribution</h2>
-        <p>
-            I built the whole application: product concept, AI interaction design, frontend architecture, the server-side chat route, the agent and its tool layer, the Markdown knowledge corpus, deployment and ongoing maintenance.
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Product Decisions</h2>
+        <ul class="list-disc pl-5 space-y-2">
+            <li><strong>Start from visitor intent:</strong> Organize the entry prompts around what an evaluator wants to learn, then let the conversation branch into specific evidence.</li>
+            <li><strong>Keep knowledge reviewable:</strong> Markdown records hold the detailed facts. An index describes where to look, separating navigation summaries from the material used to answer.</li>
+            <li><strong>Use retrieval suited to the content:</strong> A small, curated portfolio can be navigated through a document index and a reading tool without maintaining an embedding pipeline.</li>
+        </ul>
 
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">Key Product Decisions</h2>
-        <p>
-            <ul class="list-disc pl-5 space-y-2">
-                <li><strong>Grounded over generative:</strong> Rather than letting the model answer from memory, the agent receives an index of document paths and descriptions in its system prompt, selects relevant records, and reads their full content on demand through a single <code>knowledgeReader</code> tool. Answers are grounded in documents I wrote and can review.</li>
-                <li><strong>Markdown as the knowledge base:</strong> Plain Markdown files under <code>src/assets/knowledge/</code> keep the corpus editable and diffable, with no vector database or embedding index to maintain.</li>
-                <li><strong>Structured validation:</strong> The tool's path input is validated with Zod and restricted to <code>.md</code> files inside the knowledge directory, so the agent cannot read arbitrary files.</li>
-                <li><strong>Mobile-first conversation:</strong> Quick-question prompts lower the cost of the first message and the layout is built mobile-first with Tailwind CSS, since many visitors arrive from a phone.</li>
-            </ul>
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">My Contribution</h2>
+        <p>I independently owned the product concept, interaction design, responsive frontend, server-side chat route, agent/tool architecture, knowledge records, deployment and maintenance. This connected the product question — how a visitor explores my background — to the engineering question of how an agent finds the right supporting record.</p>
 
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">Technical Implementation</h2>
-        <p>
-            <ul class="list-disc pl-5 space-y-2">
-                <li><strong>Framework:</strong> Next.js 16 App Router with React 19 and TypeScript, separating the client chat interface, a server-side chat API route and the agent layer.</li>
-                <li><strong>Agent layer:</strong> LangChain.js constructs the agent with one retrieval tool; the system prompt loads from <code>systemPrompt.md</code> with the body of <code>knowledgeIndex.md</code> appended.</li>
-                <li><strong>Streaming:</strong> The Vercel AI SDK bridges the LangChain stream to the client, with OpenRouter providing model access.</li>
-                <li><strong>Styling:</strong> Tailwind CSS v4 with a mobile-first responsive layout.</li>
-            </ul>
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Technical Implementation</h2>
+        <ul class="list-disc pl-5 space-y-2">
+            <li><strong>Application:</strong> Next.js 16 App Router, React 19 and TypeScript separate the client conversation interface from the server-side chat API.</li>
+            <li><strong>Agentic retrieval:</strong> The LangChain agent receives a prompt-injected knowledge index and uses a single <code>knowledgeReader</code> tool to read selected Markdown documents on demand. It can read multiple records for one question.</li>
+            <li><strong>Tool boundary:</strong> Zod validates path input; resolved paths and symlinks are checked so the tool only reads Markdown inside the knowledge directory.</li>
+            <li><strong>Model and streaming:</strong> OpenRouter provides model access, while the Vercel AI SDK bridges the LangChain response stream to the interface. Tailwind CSS v4 supports the responsive layout.</li>
+        </ul>
 
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">Outcomes</h2>
-        <p>
-            Agent Yong reimagines the portfolio as a dialogue and is the project that prompted the NovaAgent capstone — classmates who saw it wanted the same capability for their own knowledge. It was confirmed running in September 2026, with an implementation iteration confirmed the same month.
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Outcomes</h2>
+        <p>I delivered a working alternative way to explore my portfolio. Classmates' interest in Agent Yong helped inspire NovaAgent, extending a personal assistant into a platform for other creators. Agent Yong was confirmed running in September 2026, with a further implementation update that month.</p>
 
-        <h2 class = "font-anton text-xl text-highlight-text mt-10 mb-5 ">Trade-offs & Current Status</h2>
-        <p>
-            File-based agentic retrieval is not the same as vector RAG: there is no embedding pipeline or similarity search, so relevance depends on the agent choosing well from the index descriptions. Prompt instructions and tool availability do not force a tool call on every turn, and I make no claim that responses are always correct or hallucination-free. A measured latency or accuracy comparison against other architectures is not available.
-        </p>
+        <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Trade-offs &amp; Current Status</h2>
+        <p>This is file-based agentic retrieval: relevance depends on selecting suitable documents from the index. There are no embeddings, vector database or similarity search. Prompt instructions encourage retrieval but do not force a tool call on every turn, so responses still need careful factual evaluation. The application runs separately from this portfolio and links visitors back to it.</p>
     `,
 };

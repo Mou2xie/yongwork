@@ -27,6 +27,11 @@ export class Detail {
         return this.pageContent()?.image?.length ?? 0;
     }
 
+    protected imageCaption(image: string, index: number): string {
+        const page = this.pageContent();
+        return page?.imageCaptions?.[image] ?? `${page?.projectName} screenshot ${index + 1}`;
+    }
+
     /**
      * Snapshot rows for the top of the case study. Only populated fields are
      * rendered, so supplementary records can omit them cleanly.
@@ -48,9 +53,6 @@ export class Detail {
                 label: 'Scope',
                 value: page.teamSize > 1 ? `Team of ${page.teamSize}` : 'Independent',
             });
-        }
-        if (page.status) {
-            rows.push({ label: 'Status', value: page.status });
         }
         return rows;
     }
