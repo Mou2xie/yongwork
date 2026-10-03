@@ -13,14 +13,21 @@ export const fixmycity: IProjectContent = {
         'Five-person capstone. My documented contribution is end-to-end product and UI/UX design plus the AI moderation and issue-triage workflows. The Flutter mobile client, React dashboard, mapping and notification layers are team scope, not my individual implementation.',
     links: [
         { channel: 'website', url: 'https://fixmycity-welcome.vercel.app/' },
-        { channel: 'website', url: 'https://fixmycityadmindashboard.vercel.app' },
     ],
     image: [
+        '/projects/fixmycity/welcome.png',
+        '/projects/fixmycity/platform-overview.png',
+        '/projects/fixmycity/workflow-value.png',
+        '/projects/fixmycity/how-it-works.png',
         '/projects/fixmycity/mobile-1.png',
         '/projects/fixmycity/mobile-2.png',
         '/projects/fixmycity/mobile-3.png',
     ],
     imageCaptions: {
+        '/projects/fixmycity/welcome.png': 'Fix My City welcome page — introduction to the civic reporting prototype (team project).',
+        '/projects/fixmycity/platform-overview.png': 'Fix My City landing page — citizen app and admin dashboard overview (team project).',
+        '/projects/fixmycity/workflow-value.png': 'Fix My City landing page — workflow and core value overview (team project).',
+        '/projects/fixmycity/how-it-works.png': 'Fix My City landing page — four-step reporting workflow (team project).',
         '/projects/fixmycity/mobile-1.png': 'Fix My City mobile prototype — resident home and recent reports (team-built interface).',
         '/projects/fixmycity/mobile-2.png': 'Fix My City mobile prototype — issue-category step in the reporting wizard (team-built interface).',
         '/projects/fixmycity/mobile-3.png': 'Fix My City mobile prototype — submitted report and status timeline (team-built interface).',

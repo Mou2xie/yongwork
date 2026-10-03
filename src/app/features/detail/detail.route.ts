@@ -1,8 +1,8 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { map, tap } from 'rxjs/operators';
-import type { IProjectContent } from '../../assets/projectContent/IProjectContent';
+import type { IProjectContent, ProjectLink } from '../../assets/projectContent/IProjectContent';
 
 @Component({
     selector: 'app-detail',
@@ -21,6 +21,14 @@ export class Detail {
         ),
         { initialValue: this.activatedRoute.snapshot.data['projectContent'] },
     );
+
+    /** Show the live site first, followed by source code and design files. */
+    protected orderedLinks = computed(() => {
+        const links: ProjectLink[] = this.pageContent()?.links ?? [];
+        return ['website', 'github', 'figma'].flatMap((channel) =>
+            links.filter((link) => link.channel === channel),
+        );
+    });
 
     /** Number of gallery images; drives carousel control visibility. */
     protected imageCount(): number {

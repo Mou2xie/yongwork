@@ -12,7 +12,10 @@ export const tendermaster: IProjectContent = {
     scopeNote:
         'Independently designed and implemented as a custom client delivery. This is a CLI tool; no frontend was built and no public repository is published.',
     links: [],
-    image: [],
+    image: ['/projects/tendermaster/pipeline-animated.gif'],
+    imageCaptions: {
+        '/projects/tendermaster/pipeline-animated.gif': 'Tender Master animated pipeline — Markdown outline, planning, chapter drafting, quality checks, revision feedback and Word document assembly.',
+    },
     content: `
         <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Background, Problem &amp; Audience</h2>
         <p>A bidding consultancy needed support for drafting formal Chinese government-project proposals. Compressed deadlines, scarce specialist writers and uneven writing quality made the workflow difficult to scale. The users were internal bid-writing staff: they needed a structured first draft and a consistent review process that left domain judgment with the people responsible for submission.</p>

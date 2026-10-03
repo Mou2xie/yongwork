@@ -33,7 +33,7 @@ export const lingoPick: IProjectContent = {
     },
     content: `
         <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Background, Problem &amp; Audience</h2>
-        <p>LingoPick extended the vocabulary-learning workflow I had built in Transider. The core audience remained people learning English while browsing, but this experiment added contextual AI translation, flashcard review and a paid membership offering. It explored how a focused free extension could become a broader learning product with premium functionality.</p>
+        <p>LingoPick extended the vocabulary-learning workflow I had built in <a href="/detail/3" class="text-accent underline underline-offset-4">Transider</a>. The core audience remained people learning English while browsing, but this experiment added contextual AI translation, flashcard review and a paid membership offering. It explored how a focused free extension could become a broader learning product with premium functionality.</p>
 
         <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Solution &amp; Key Features</h2>
         <ul class="list-disc pl-5 space-y-2">
@@ -44,7 +44,7 @@ export const lingoPick: IProjectContent = {
         </ul>
 
         <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Product Decisions</h2>
-        <p>I retained the reading-to-collection journey from Transider and extended it into translation, review and membership. Using Gumroad kept payments and licence validation within an existing platform. Separate translation-provider services gave the implementation a place to integrate Gemini and DeepSeek without coupling each provider directly to the interface.</p>
+        <p>I retained the reading-to-collection journey from <a href="/detail/3" class="text-accent underline underline-offset-4">Transider</a> and extended it into translation, review and membership. Using Gumroad kept payments and licence validation within an existing platform. Separate translation-provider services gave the implementation a place to integrate Gemini and DeepSeek without coupling each provider directly to the interface.</p>
 
         <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">My Contribution</h2>
         <p>I independently built the extension and its complete premium membership functionality, including Gumroad integration. My scope covered product/interface design and the implementation that connected AI translation, vocabulary collection, review and paid access.</p>

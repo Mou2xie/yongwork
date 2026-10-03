@@ -5,7 +5,7 @@
             {{ pageContent()?.projectName }}
         </h1>
         <div class="flex items-center gap-4">
-            @for (item of pageContent()?.links; track item.channel + item.url) {
+            @for (item of orderedLinks(); track item.channel + item.url) {
             @switch (item.channel) {
             @case ('figma') {
             <a [href]="item.url" target="_blank" rel="noopener noreferrer"
@@ -95,15 +95,6 @@
         </div>
         }
     </div>
-    <figcaption class="mt-3 text-sm text-center" aria-live="polite">
-        @for (item of pageContent()?.image; track item) {
-        @if ($index === currentIndex()) {
-        {{ imageCaption(item, $index) }}
-        <a [href]="item" target="_blank" rel="noopener noreferrer"
-            class="ml-2 text-accent underline underline-offset-4">View full size</a>
-        }
-        }
-    </figcaption>
 </figure>
 }
 

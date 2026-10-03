@@ -20,14 +20,22 @@ export const novaagent: IProjectContent = {
     image: [
         '/projects/novaagent/2.png',
         '/projects/novaagent/1.png',
+        '/projects/novaagent/personnel.png',
+        '/projects/novaagent/knowledge-base.png',
+        '/projects/novaagent/behavior.png',
+        '/projects/novaagent/share.png',
     ],
     imageCaptions: {
         '/projects/novaagent/2.png': 'NovaAgent public assistant — shared conversation page, captured October 2026.',
         '/projects/novaagent/1.png': 'NovaAgent landing page — entry point for creating an agent, captured October 2026.',
+        '/projects/novaagent/personnel.png': 'NovaAgent personnel settings — agent name, persona, job description, goals and avatar.',
+        '/projects/novaagent/knowledge-base.png': 'NovaAgent knowledge base — uploaded documents and document upload controls.',
+        '/projects/novaagent/behavior.png': 'NovaAgent behavior settings — welcome message and conversation tone.',
+        '/projects/novaagent/share.png': 'NovaAgent sharing — public conversation link and downloadable QR code.',
     },
     content: `
         <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Background, Problem &amp; Audience</h2>
-        <p>NovaAgent grew out of Agent Yong. After classmates tried my conversational portfolio, they wanted personalized assistants of their own. Our capstone advisor suggested turning that interest into a platform anyone could use. Market and user-demand research shaped the direction: individuals and small businesses needed a lightweight way to turn private knowledge into an interactive assistant without assembling their own AI infrastructure.</p>
+        <p>NovaAgent grew out of <a href="/detail/303" class="text-accent underline underline-offset-4">Agent Yong</a>. After classmates tried my conversational portfolio, they wanted personalized assistants of their own. Our capstone advisor suggested turning that interest into a platform anyone could use. Market and user-demand research shaped the direction: individuals and small businesses needed a lightweight way to turn private knowledge into an interactive assistant without assembling their own AI infrastructure.</p>
 
         <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Solution &amp; Key Features</h2>
         <p>We built a zero-code agent platform for use cases such as product guides, help desks and personal knowledge assistants. The core journey is to configure an agent, add its knowledge, and share a conversation page.</p>
@@ -41,9 +49,10 @@ export const novaagent: IProjectContent = {
 
         <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Product Decisions</h2>
         <ul class="list-disc pl-5 space-y-2">
-            <li><strong>Make configuration the product:</strong> The dashboard exposes persona, knowledge and behavior settings so users can shape an assistant without editing prompts in source code.</li>
-            <li><strong>Show the work behind an upload:</strong> Document ingestion happens asynchronously. Realtime processing status makes that waiting stage visible in the creator journey.</li>
-            <li><strong>Design sharing as part of creation:</strong> A standalone conversation page gives the creator a direct way to put the agent in front of its audience, including people on phones.</li>
+            <li><strong>Keep it easy to understand and use:</strong> Use simple, everyday words instead of technical terms, so people can set up and manage an agent without needing a technical background.</li>
+            <li><strong>Use private knowledge to improve answers:</strong> A RAG system keeps uploaded documents available for the agent to look up when answering questions, helping it give more accurate answers based on the user's own information.</li>
+            <li><strong>Make sharing and access simple:</strong> Give each agent a link and QR code so creators can share it easily and others can open a conversation with a click or scan.</li>
+            <li><strong>Build for the web first:</strong> Let people use NovaAgent directly in their browser, including on phones, without downloading a separate mobile app. Removing that extra step makes the product easier to access.</li>
         </ul>
 
         <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">My Contribution</h2>

@@ -86,3 +86,19 @@ The previous `fixmycity/1.png` is an admin **login screen**, not an authenticate
 Transider's revised gallery retains `2.png` and `3.png`, the historical Chrome Web Store graphics containing its side-panel and notebook UI. Captions explicitly identify them as graphics. SpeakingPass, LingoPick, molibb and horoscope retain existing source screenshots, with descriptive captions; LingoPick is labeled historical/discontinued.
 
 Agent Yong's older `1.png` / `2.png` and the portfolio's older numbered assets remain on disk for provenance; new captures are referenced by the detail galleries. Tender Master remains a CLI record with no gallery. Older projects outside this review retain their assets and gallery references.
+
+## 8. NovaAgent cover replacement — 2026-10-02
+
+`public/projects/novaagent/cover.png` is now a 1448×1086 (4:3) illustrated brand cover generated with built-in ImageGen at the user's request. This supersedes the screenshot source and dimensions in §1. It depicts the NovaAgent wordmark and its human/robot hand motif, with an opaque lavender background and centered details for responsive card cropping; it is not a product screenshot. The original `object-cover` card styling is retained.
+
+The exact generation and final composition-edit prompts are recorded in [NovaAgent cover generation](novaagent-cover-generation.md).
+
+## 9. Agent Yong gallery replacement — 2026-10-02
+
+`public/projects/agentyong/current-conversation.png` (1647×935) is a user-supplied screenshot of a conversation showing a personal introduction. It replaces `current-mobile.png` in the detail gallery; the previous mobile asset remains on disk for provenance. The gallery description now identifies the conversation view rather than a mobile entry screen.
+
+## 10. Tender Master architecture image — 2026-10-02
+
+`public/projects/tendermaster/architecture.jpg` (2730×1536) is copied unchanged from the user-supplied `Resume/output/tender-master-architecture.png` and displayed in the detail gallery. The supplied file contains JPEG data, so the delivered extension matches its format. It is an architecture illustration, not a product-interface screenshot. This supersedes the earlier no-gallery status; Tender Master remains a CLI tool.
+
+The user subsequently replaced this gallery image with `public/projects/tendermaster/pipeline-animated.gif` (1200×675, 16:9), copied unchanged from `Resume/output/tender-master-pipeline-animated.gif`. Animation is preserved. The static architecture asset remains on disk; the gallery now references only the animated pipeline illustration.

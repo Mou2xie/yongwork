@@ -16,10 +16,10 @@ export const agentyong: IProjectContent = {
     ],
     image: [
         '/projects/agentyong/current-home.png',
-        '/projects/agentyong/current-mobile.png',
+        '/projects/agentyong/current-conversation.png',
     ],
     imageCaptions: {
-        '/projects/agentyong/current-mobile.png': 'Agent Yong — mobile conversation entry screen, captured October 2026.',
+        '/projects/agentyong/current-conversation.png': 'Agent Yong — conversation showing a personal introduction, captured October 2026.',
         '/projects/agentyong/current-home.png': 'Agent Yong — conversation entry screen with quick-question prompts, captured October 2026.',
     },
     content: `
@@ -39,7 +39,7 @@ export const agentyong: IProjectContent = {
         <ul class="list-disc pl-5 space-y-2">
             <li><strong>Start from visitor intent:</strong> Organize the entry prompts around what an evaluator wants to learn, then let the conversation branch into specific evidence.</li>
             <li><strong>Keep knowledge reviewable:</strong> Markdown records hold the detailed facts. An index describes where to look, separating navigation summaries from the material used to answer.</li>
-            <li><strong>Use retrieval suited to the content:</strong> A small, curated portfolio can be navigated through a document index and a reading tool without maintaining an embedding pipeline.</li>
+            <li><strong>Keep retrieval simple and effective:</strong> I built an agentic RAG system based on Markdown files instead of using a vector database. The agent uses a document index to find and read relevant files on demand, keeping the setup simple and suited to a small, curated portfolio.</li>
         </ul>
 
         <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">My Contribution</h2>
@@ -54,7 +54,7 @@ export const agentyong: IProjectContent = {
         </ul>
 
         <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Outcomes</h2>
-        <p>I delivered a working alternative way to explore my portfolio. Classmates' interest in Agent Yong helped inspire NovaAgent, extending a personal assistant into a platform for other creators. Agent Yong was confirmed running in September 2026, with a further implementation update that month.</p>
+        <p>I delivered a working alternative way to explore my portfolio. Classmates' interest in Agent Yong helped inspire <a href="/detail/304" class="text-accent underline underline-offset-4">NovaAgent</a>, extending a personal assistant into a platform for other creators. Agent Yong was confirmed running in September 2026, with a further implementation update that month.</p>
 
         <h2 class="font-anton text-xl text-highlight-text mt-10 mb-5">Trade-offs &amp; Current Status</h2>
         <p>This is file-based agentic retrieval: relevance depends on selecting suitable documents from the index. There are no embeddings, vector database or similarity search. Prompt instructions encourage retrieval but do not force a tool call on every turn, so responses still need careful factual evaluation. The application runs separately from this portfolio and links visitors back to it.</p>
